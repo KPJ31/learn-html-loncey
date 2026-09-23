@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15-Minute HTML Master Revision</title>
+    <meta
+      name="description"
+      content="A practical 15-minute HTML refresher covering foundations, forms, accessibility, and production checks from all 15 books."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        color: #172c37;
+        background: #f4f6f5;
+        line-height: 1.65;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      body > header,
+      main,
+      body > footer {
+        max-width: 1000px;
+        margin: auto;
+        padding: 2rem 1.5rem;
+      }
+      body > header {
+        padding-top: 4rem;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.12;
+        max-width: 800px;
+        margin: 0.7rem 0 1.2rem;
+      }
+      h2 {
+        line-height: 1.25;
+        margin-top: 0.5rem;
+      }
+      h3 {
+        line-height: 1.3;
+      }
+      a {
+        color: #075d61;
+        text-underline-offset: 0.2em;
+      }
+      a:hover {
+        color: #123e40;
+      }
+      :focus-visible {
+        outline: 3px solid #ac4a12;
+        outline-offset: 4px;
+      }
+      .eyebrow,
+      .time {
+        color: #075d61;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+      }
+      .intro {
+        max-width: 720px;
+        font-size: 1.12rem;
+      }
+      nav ol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 0.65rem 1.5rem;
+        padding-left: 1.4rem;
+      }
+      section {
+        margin-bottom: 2rem;
+        background: white;
+        border: 1px solid #d5dedd;
+        border-radius: 12px;
+        padding: clamp(1rem, 3vw, 2rem);
+        scroll-margin-top: 1rem;
+      }
+      .books {
+        color: #53666c;
+        font-size: 0.9rem;
+      }
+      pre {
+        background: #142b36;
+        color: #edf5f4;
+        padding: 1.25rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: 0.88rem;
+        line-height: 1.65;
+      }
+      code {
+        font-family: Consolas, monospace;
+        overflow-wrap: anywhere;
+      }
+      pre code {
+        overflow-wrap: normal;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: minmax(130px, 1fr) 2fr;
+        gap: 0.5rem 1rem;
+      }
+      dt {
+        font-weight: 600;
+      }
+      dd {
+        margin: 0;
+      }
+      .note {
+        padding: 1rem;
+        border-left: 4px solid #ac4a12;
+        background: #fff6e9;
+      }
+      .checklist {
+        list-style: none;
+        padding: 0;
+      }
+      .checklist li {
+        padding: 0.35rem 0;
+      }
+      input[type="checkbox"] {
+        accent-color: #075d61;
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      caption {
+        text-align: left;
+        font-weight: 600;
+        margin-bottom: 0.7rem;
+      }
+      th,
+      td {
+        padding: 0.6rem;
+        border-bottom: 1px solid #d5dedd;
+        text-align: left;
+      }
+      .skip {
+        position: absolute;
+        top: -100px;
+        left: 1rem;
+        padding: 0.6rem;
+        background: white;
+      }
+      .skip:focus {
+        top: 1rem;
+      }
+      @media (max-width: 550px) {
+        dl {
+          grid-template-columns: 1fr;
+        }
+        dd {
+          margin-bottom: 0.5rem;
+        }
+      }
+      @media print {
+        :root {
+          background: white;
+          color: black;
+        }
+        section {
+          border: 0;
+          padding: 0;
+        }
+        pre {
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          background: #eee;
+          color: black;
+        }
+        nav,
+        .skip {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#revision">Skip to revision</a>
+    <header>
+      <p class="eyebrow">15 books · One practical refresher</p>
+      <h1>15-Minute HTML Master Revision</h1>
+      <p class="intro">Read → Remember → Code → Check</p>
+      <p>
+        Finished the 15-book series? Revisit the essentials with one small
+        portfolio. Follow the timed notes, then use the complete example to
+        check your memory.
+      </p>
+      <nav aria-label="Revision timeline">
+        <ol>
+          <li><a href="#foundations">0–3 min · HTML Foundations</a></li>
+          <li><a href="#paths">3–5 min · Links, Images & File Paths</a></li>
+          <li><a href="#lists">5–7 min · Lists & Tables</a></li>
+          <li><a href="#forms">7–10 min · Forms & Validation</a></li>
+          <li><a href="#media">10–11 min · Multimedia</a></li>
+          <li>
+            <a href="#metadata">11–12 min · Metadata, SEO & Social Sharing</a>
+          </li>
+          <li><a href="#accessibility">12–13 min · Accessibility</a></li>
+          <li><a href="#advanced">13–14 min · Advanced HTML</a></li>
+          <li>
+            <a href="#check">14–15 min · Professional HTML Final Check</a>
+          </li>
+        </ol>
+      </nav>
+      <p>
+        <a href="#complete">Complete example</a> ·
+        <a href="#book-map">15-book map</a> ·
+        <a href="#challenge">Practice challenge</a>
+      </p>
+    </header>
+    <main id="revision">
+      <section aria-labelledby="setup-title">
+        <p class="eyebrow">Before you start</p>
+        <h2 id="setup-title">One small project</h2>
+        <p>
+          Focus on <code>html-revision/index.html</code>. Open it in a browser
+          or VS Code’s local preview. About and Contact are small supporting
+          pages.
+        </p>
+        <pre><code>html-revision/
+├── index.html
+├── about.html
+├── contact.html
+├── images/
+│   └── profile.jpg
+├── audio/
+│   └── music.mp3
+└── videos/
+    └── demo.mp4</code></pre>
+        <p class="note">
+          Supply your own media at these paths; media files are not bundled. Use
+          a square profile photo for the sample’s 300 × 300 dimensions, or
+          change the dimensions to match your image. You can review the HTML
+          before adding media.
+        </p>
+        <p>
+          <a href="html-revision/index.html">Open the sample project</a> ·
+          <a href="html-revision/index.html" download="index.html"
+            >Download sample index.html</a
+          >
+        </p>
+      </section>
+      <section id="foundations" aria-labelledby="foundations-title">
+        <p class="time">0–3 minutes</p>
+        <h2 id="foundations-title">HTML Foundations</h2>
+        <p class="books">Books 01 · 02 · 06</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;My HTML Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My Website&lt;/h1&gt;
+        &lt;nav aria-label=&quot;Main navigation&quot;&gt;
+            &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+            &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Welcome&lt;/h2&gt;
+            &lt;p&gt;I am learning &lt;strong&gt;HTML&lt;/strong&gt;.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <dl>
+          <dt><code>&lt;!DOCTYPE html&gt;</code></dt>
+          <dd>Uses modern HTML mode.</dd>
+          <dt><code>html lang=&quot;en&quot;</code></dt>
+          <dd>Root element; declares English.</dd>
+          <dt><code>head</code></dt>
+          <dd>Page settings and metadata.</dd>
+          <dt><code>body</code></dt>
+          <dd>Visible page content.</dd>
+          <dt><code>h1–h6</code></dt>
+          <dd>Headings: organize levels logically.</dd>
+          <dt><code>p</code></dt>
+          <dd>A paragraph.</dd>
+          <dt><code>strong</code></dt>
+          <dd>Marks importance.</dd>
+          <dt><code>header</code></dt>
+          <dd>Introductory content.</dd>
+          <dt><code>nav</code></dt>
+          <dd>Major navigation links.</dd>
+          <dt><code>main</code></dt>
+          <dd>The page’s main content.</dd>
+          <dt><code>section</code></dt>
+          <dd>A themed group, usually with a heading.</dd>
+          <dt><code>footer</code></dt>
+          <dd>Closing information.</dd>
+        </dl>
+      </section>
+      <section id="paths" aria-labelledby="paths-title">
+        <p class="time">3–5 minutes</p>
+        <h2 id="paths-title">Links, Images & File Paths</h2>
+        <p class="books">Books 03</p>
+        <pre><code>&lt;a href=&quot;about.html&quot;&gt;About Me&lt;/a&gt;
+&lt;a href=&quot;https://example.com&quot;&gt;Visit Website&lt;/a&gt;
+&lt;img src=&quot;images/profile.jpg&quot; alt=&quot;Portrait of the portfolio author&quot; width=&quot;300&quot;&gt;</code></pre>
+        <dl>
+          <dt><code>about.html</code></dt>
+          <dd>Same folder as the current page.</dd>
+          <dt><code>images/profile.jpg</code></dt>
+          <dd>Inside the images folder.</dd>
+          <dt><code>../images/profile.jpg</code></dt>
+          <dd>Go up one folder, then into images.</dd>
+        </dl>
+        <p>
+          <code>href</code> is a link destination; <code>src</code> locates
+          media. Describe the actual image in <code>alt</code>.
+        </p>
+      </section>
+      <section id="lists" aria-labelledby="lists-title">
+        <p class="time">5–7 minutes</p>
+        <h2 id="lists-title">Lists & Tables</h2>
+        <p class="books">Books 04</p>
+        <pre><code>&lt;h2&gt;My Skills&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <pre><code>&lt;table&gt;
+    &lt;caption&gt;My technology levels&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope=&quot;col&quot;&gt;Technology&lt;/th&gt;
+            &lt;th scope=&quot;col&quot;&gt;Level&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;HTML&lt;/td&gt;
+            &lt;td&gt;Advanced&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;CSS&lt;/td&gt;
+            &lt;td&gt;Beginner&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        <dl>
+          <dt><code>ul / ol</code></dt>
+          <dd>Unordered bullets / ordered steps.</dd>
+          <dt><code>li</code></dt>
+          <dd>One list item.</dd>
+          <dt><code>table</code></dt>
+          <dd>Tabular data, not page layout.</dd>
+          <dt><code>caption</code></dt>
+          <dd>The table’s title.</dd>
+          <dt><code>thead / tbody</code></dt>
+          <dd>Header rows / data rows.</dd>
+          <dt><code>tr</code></dt>
+          <dd>A table row.</dd>
+          <dt><code>th</code></dt>
+          <dd>A header cell; scope="col" identifies a column header.</dd>
+          <dt><code>td</code></dt>
+          <dd>A data cell.</dd>
+        </dl>
+      </section>
+      <section id="forms" aria-labelledby="forms-title">
+        <p class="time">7–10 minutes</p>
+        <h2 id="forms-title">Forms & Validation</h2>
+        <p class="books">Books 05 · 08</p>
+        <pre><code>&lt;form action=&quot;/contact&quot; method=&quot;post&quot;&gt;
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;
+           minlength=&quot;3&quot; maxlength=&quot;100&quot; autocomplete=&quot;name&quot; required&gt;
+
+    &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+    &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
+           autocomplete=&quot;email&quot; required&gt;
+
+    &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+    &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;
+
+    &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <p>
+          <code>action</code> sets the receiving URL;
+          <code>method="post"</code> sends data in the request body. Each
+          <code>name</code> is a submitted field key; <code>for</code> connects
+          a label to an input’s <code>id</code>.
+        </p>
+        <dl>
+          <dt><code>required</code></dt>
+          <dd>Must be filled in.</dd>
+          <dt>
+            <code>minlength=&quot;3&quot; / maxlength=&quot;100&quot;</code>
+          </dt>
+          <dd>Text length limits.</dd>
+          <dt><code>min=&quot;1&quot; / max=&quot;10&quot;</code></dt>
+          <dd>Number or date bounds (use valid dates for date inputs).</dd>
+          <dt><code>placeholder=&quot;Enter your name&quot;</code></dt>
+          <dd>A hint, never a replacement for a label.</dd>
+          <dt><code>autocomplete=&quot;name&quot;</code></dt>
+          <dd>Helps the browser fill a name.</dd>
+          <dt><code>type=&quot;email&quot;</code></dt>
+          <dd>Checks basic email format.</dd>
+          <dt><code>type=&quot;date&quot;</code></dt>
+          <dd>A date input.</dd>
+          <dt><code>type=&quot;number&quot;</code></dt>
+          <dd>A numeric input.</dd>
+          <dt><code>type=&quot;file&quot;</code></dt>
+          <dd>
+            A file picker; uploads need method="post" and
+            enctype="multipart/form-data".
+          </dd>
+        </dl>
+        <pre><code>&lt;label for=&quot;rating&quot;&gt;Rating (1–10)&lt;/label&gt;
+&lt;input type=&quot;number&quot; id=&quot;rating&quot; name=&quot;rating&quot; min=&quot;1&quot; max=&quot;10&quot;&gt;</code></pre>
+        <p class="note">
+          This is a static practice project: <code>/contact</code> needs a
+          backend. Browser validation helps users; validate again on the server.
+          POST alone does not encrypt data—use HTTPS.
+        </p>
+      </section>
+      <section id="media" aria-labelledby="media-title">
+        <p class="time">10–11 minutes</p>
+        <h2 id="media-title">Multimedia</h2>
+        <p class="books">Books 07</p>
+        <pre><code>&lt;audio controls preload=&quot;none&quot;&gt;
+    &lt;source src=&quot;audio/music.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+    Your browser does not support audio.
+&lt;/audio&gt;
+
+&lt;video controls width=&quot;500&quot; preload=&quot;none&quot;&gt;
+    &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    Your browser does not support video.
+&lt;/video&gt;</code></pre>
+        <p>
+          <code>controls</code> adds playback buttons.
+          <code>source</code> supplies the file and MIME type.
+          <code>preload="none"</code> avoids requesting media in advance.
+          Fallback text is for browsers that do not support the element.
+        </p>
+        <p>
+          Use your own instrumental audio and silent demo video for this sample.
+          For speech, provide a transcript and video captions using
+          <code>&lt;track kind="captions"&gt;</code>; describe meaningful visual
+          information too.
+        </p>
+      </section>
+      <section id="metadata" aria-labelledby="metadata-title">
+        <p class="time">11–12 minutes</p>
+        <h2 id="metadata-title">Metadata, SEO & Social Sharing</h2>
+        <p class="books">Books 09</p>
+        <p>Place these inside <code>&lt;head&gt;</code>.</p>
+        <pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;HTML Developer Portfolio&lt;/title&gt;
+&lt;meta name=&quot;description&quot; content=&quot;My personal web development portfolio.&quot;&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;HTML Developer Portfolio&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;View my web development projects.&quot;&gt;</code></pre>
+        <dl>
+          <dt><code>charset</code></dt>
+          <dd>UTF-8 supports a wide range of characters.</dd>
+          <dt><code>title</code></dt>
+          <dd>Identifies the page in browser tabs and search results.</dd>
+          <dt><code>description</code></dt>
+          <dd>Summarizes the page; search engines may use it as a snippet.</dd>
+          <dt><code>viewport</code></dt>
+          <dd>Makes the layout viewport match the device width.</dd>
+          <dt><code>og:title / og:description</code></dt>
+          <dd>Suggest a title and description for social link previews.</dd>
+        </dl>
+      </section>
+      <section id="accessibility" aria-labelledby="accessibility-title">
+        <p class="time">12–13 minutes</p>
+        <h2 id="accessibility-title">Accessibility</h2>
+        <p class="books">Books 10</p>
+        <pre><code>&lt;label for=&quot;email&quot;&gt;Email Address&lt;/label&gt;
+&lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot;&gt;
+
+&lt;img src=&quot;images/student.jpg&quot; alt=&quot;Student working on a laptop&quot;&gt;
+&lt;img src=&quot;images/decoration.svg&quot; alt=&quot;&quot;&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;h1&gt;Main Title&lt;/h1&gt;
+&lt;h2&gt;About&lt;/h2&gt;
+&lt;h3&gt;Our History&lt;/h3&gt;</code></pre>
+        <p>
+          These are separate examples: set <code>lang</code> on the document’s
+          existing root. Informative images need meaningful alt text; decorative
+          images use <code>alt=""</code>. The student and decoration images are
+          illustrative paths, not required sample assets.
+        </p>
+        <p>
+          Keep headings in a logical hierarchy. Use native links, buttons, and
+          controls. Test with Tab, Shift+Tab, Enter, and Space; keep keyboard
+          focus visible.
+        </p>
+      </section>
+      <section id="advanced" aria-labelledby="advanced-title">
+        <p class="time">13–14 minutes</p>
+        <h2 id="advanced-title">Advanced HTML</h2>
+        <p class="books">Books 11</p>
+        <pre><code>&lt;details&gt;
+    &lt;summary&gt;What is HTML?&lt;/summary&gt;
+    &lt;p&gt;HTML provides the structure and meaning of web content.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;label for=&quot;learning&quot;&gt;Learning progress&lt;/label&gt;
+&lt;progress id=&quot;learning&quot; value=&quot;70&quot; max=&quot;100&quot;&gt;70%&lt;/progress&gt;
+
+&lt;label for=&quot;score&quot;&gt;Quiz score&lt;/label&gt;
+&lt;meter id=&quot;score&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;85&quot;&gt;85%&lt;/meter&gt;</code></pre>
+        <dl>
+          <dt><code>details / summary</code></dt>
+          <dd>A native expandable disclosure and its label.</dd>
+          <dt><code>progress</code></dt>
+          <dd>Completion of a task.</dd>
+          <dt><code>meter</code></dt>
+          <dd>A measurement within a known range, such as a score.</dd>
+        </dl>
+        <p>
+          Browser APIs such as geolocation and storage require JavaScript; HTML
+          supplies the elements they can work with.
+        </p>
+      </section>
+      <section id="check" aria-labelledby="check-title">
+        <p class="time">14–15 minutes</p>
+        <h2 id="check-title">Professional HTML Final Check</h2>
+        <p class="books">Books 12 · 13 · 14 · 15</p>
+        <p>
+          Use this checklist before calling a project finished. Checkboxes reset
+          when you reload.
+        </p>
+        <ul class="checklist">
+          <li>
+            <label
+              ><input type="checkbox" /> Correct &lt;!DOCTYPE html&gt;</label
+            >
+          </li>
+          <li>
+            <label><input type="checkbox" /> Correct lang attribute</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> UTF-8 charset</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Responsive viewport</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Useful page title</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Meta description</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Correct semantic HTML</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Logical heading hierarchy</label>
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Meaningful image alt attributes</label
+            >
+          </li>
+          <li>
+            <label><input type="checkbox" /> Proper form labels</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Appropriate input types</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Required validation</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Working links</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Correct file paths</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Keyboard accessibility</label>
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Avoid unnecessary &lt;div&gt;
+              elements</label
+            >
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Avoid obsolete HTML such as
+              &lt;font&gt; and &lt;center&gt;</label
+            >
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> HTML for structure and meaning</label
+            >
+          </li>
+          <li>
+            <label><input type="checkbox" /> CSS for presentation</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> JavaScript for behavior</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Mobile testing</label>
+          </li>
+          <li>
+            <label><input type="checkbox" /> Desktop testing</label>
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Form testing: empty, invalid, and valid
+              data</label
+            >
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Basic HTML validation with an HTML
+              validator</label
+            >
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Performance: compress images, set
+              accurate dimensions, avoid unnecessary media downloads</label
+            >
+          </li>
+          <li>
+            <label
+              ><input type="checkbox" /> Security before production: HTTPS,
+              server validation, safe output escaping, and CSRF protection for
+              state-changing forms</label
+            >
+          </li>
+        </ul>
+      </section>
+      <section id="complete" aria-labelledby="complete-title">
+        <h2 id="complete-title">Final complete example</h2>
+        <p>
+          Save this as <code>html-revision/index.html</code>. This is plain
+          HTML: the revision guide’s styling is not needed. Add the media files
+          and supporting pages shown above.
+        </p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;HTML Developer Portfolio&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;My personal web development portfolio.&quot;&gt;
+    &lt;meta property=&quot;og:title&quot; content=&quot;HTML Developer Portfolio&quot;&gt;
+    &lt;meta property=&quot;og:description&quot; content=&quot;View my web development projects.&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My HTML Portfolio&lt;/h1&gt;
+        &lt;nav aria-label=&quot;Main navigation&quot;&gt;
+            &lt;a href=&quot;index.html&quot; aria-current=&quot;page&quot;&gt;Home&lt;/a&gt;
+            &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+            &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Welcome&lt;/h2&gt;
+            &lt;p&gt;I am learning &lt;strong&gt;HTML&lt;/strong&gt; and building my first website.&lt;/p&gt;
+            &lt;img src=&quot;images/profile.jpg&quot; alt=&quot;Portrait of the portfolio author&quot;
+                 width=&quot;300&quot; height=&quot;300&quot;&gt;
+            &lt;p&gt;&lt;a href=&quot;https://example.com&quot;&gt;Visit Website&lt;/a&gt;&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;My Skills&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;HTML&lt;/li&gt;
+                &lt;li&gt;CSS&lt;/li&gt;
+                &lt;li&gt;JavaScript&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;table&gt;
+                &lt;caption&gt;My technology levels&lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Technology&lt;/th&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Level&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;HTML&lt;/td&gt;
+                        &lt;td&gt;Advanced&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;CSS&lt;/td&gt;
+                        &lt;td&gt;Beginner&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Media&lt;/h2&gt;
+            &lt;audio controls preload=&quot;none&quot;&gt;
+                &lt;source src=&quot;audio/music.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+                Your browser does not support audio.
+            &lt;/audio&gt;
+            
+            &lt;video controls width=&quot;500&quot; preload=&quot;none&quot;&gt;
+                &lt;source src=&quot;videos/demo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+                Your browser does not support video.
+            &lt;/video&gt;
+            &lt;p&gt;Audio: instrumental music. Video: a silent demonstration of this portfolio.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Learning&lt;/h2&gt;
+            &lt;details&gt;
+                &lt;summary&gt;What is HTML?&lt;/summary&gt;
+                &lt;p&gt;HTML provides the structure and meaning of web content.&lt;/p&gt;
+            &lt;/details&gt;
+            
+            &lt;label for=&quot;learning&quot;&gt;Learning progress&lt;/label&gt;
+            &lt;progress id=&quot;learning&quot; value=&quot;70&quot; max=&quot;100&quot;&gt;70%&lt;/progress&gt;
+            
+            &lt;label for=&quot;score&quot;&gt;Quiz score&lt;/label&gt;
+            &lt;meter id=&quot;score&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;85&quot;&gt;85%&lt;/meter&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;contact&quot;&gt;
+            &lt;h2&gt;Contact Me&lt;/h2&gt;
+            &lt;p&gt;Practice only: sending requires a server endpoint at /contact.&lt;/p&gt;
+            &lt;form action=&quot;/contact&quot; method=&quot;post&quot;&gt;
+                &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;
+                       minlength=&quot;3&quot; maxlength=&quot;100&quot; autocomplete=&quot;name&quot; required&gt;
+            
+                &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+                &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
+                       autocomplete=&quot;email&quot; required&gt;
+            
+                &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+                &lt;textarea id=&quot;message&quot; name=&quot;message&quot; required&gt;&lt;/textarea&gt;
+            
+                &lt;button type=&quot;submit&quot;&gt;Send Message&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      </section>
+      <section id="book-map" aria-labelledby="map-title">
+        <h2 id="map-title">15-Book Revision Map</h2>
+        <table>
+          <caption>
+            Where each book fits
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Book</th>
+              <th scope="col">Main concept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">01</th>
+              <td>HTML document structure</td>
+            </tr>
+            <tr>
+              <th scope="row">02</th>
+              <td>Text, headings and paragraphs</td>
+            </tr>
+            <tr>
+              <th scope="row">03</th>
+              <td>Links, images and paths</td>
+            </tr>
+            <tr>
+              <th scope="row">04</th>
+              <td>Lists and tables</td>
+            </tr>
+            <tr>
+              <th scope="row">05</th>
+              <td>Forms and user input</td>
+            </tr>
+            <tr>
+              <th scope="row">06</th>
+              <td>Semantic HTML</td>
+            </tr>
+            <tr>
+              <th scope="row">07</th>
+              <td>Audio and video</td>
+            </tr>
+            <tr>
+              <th scope="row">08</th>
+              <td>Advanced forms and validation</td>
+            </tr>
+            <tr>
+              <th scope="row">09</th>
+              <td>Metadata and SEO</td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>Accessibility</td>
+            </tr>
+            <tr>
+              <th scope="row">11</th>
+              <td>Advanced HTML elements/APIs</td>
+            </tr>
+            <tr>
+              <th scope="row">12</th>
+              <td>Professional architecture</td>
+            </tr>
+            <tr>
+              <th scope="row">13</th>
+              <td>Performance, security and optimization</td>
+            </tr>
+            <tr>
+              <th scope="row">14</th>
+              <td>Real-world projects</td>
+            </tr>
+            <tr>
+              <th scope="row">15</th>
+              <td>Production-ready development</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="challenge" aria-labelledby="challenge-title">
+        <p class="eyebrow">Your turn</p>
+        <h2 id="challenge-title">15-Minute Challenge</h2>
+        <p>
+          Close the notes, set a 15-minute timer, and build a page from memory
+          containing:
+        </p>
+        <ol>
+          <li>HTML5 document structure</li>
+          <li>Header</li>
+          <li>Navigation</li>
+          <li>Main section</li>
+          <li>Heading and paragraph</li>
+          <li>Image</li>
+          <li>Link</li>
+          <li>List</li>
+          <li>Table</li>
+          <li>Contact form</li>
+          <li>Form validation</li>
+          <li>Semantic HTML</li>
+          <li>Accessible labels</li>
+          <li>SEO metadata</li>
+          <li>Footer</li>
+        </ol>
+        <p>
+          Try to finish within 15 minutes. Then reopen the checklist, test your
+          page, and fix anything you missed before moving to CSS or a real
+          project.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>HTML Master Revision · Read → Remember → Code → Check</p>
+      <a href="#">Back to top</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Developer Portfolio</title>
+    <meta name="description" content="My personal web development portfolio.">
+    <meta property="og:title" content="HTML Developer Portfolio">
+    <meta property="og:description" content="View my web development projects.">
+</head>
+<body>
+    <header>
+        <h1>My HTML Portfolio</h1>
+        <nav aria-label="Main navigation">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome</h2>
+            <p>I am learning <strong>HTML</strong> and building my first website.</p>
+            <img src="images/profile.jpg" alt="Portrait of the portfolio author"
+                 width="300" height="300">
+            <p><a href="https://example.com">Visit Website</a></p>
+        </section>
+
+        <section>
+            <h2>My Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <table>
+                <caption>My technology levels</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Technology</th>
+                        <th scope="col">Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTML</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>CSS</td>
+                        <td>Beginner</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Media</h2>
+            <audio controls preload="none">
+                <source src="audio/music.mp3" type="audio/mpeg">
+                Your browser does not support audio.
+            </audio>
+            
+            <video controls width="500" preload="none">
+                <source src="videos/demo.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
+            <p>Audio: instrumental music. Video: a silent demonstration of this portfolio.</p>
+        </section>
+
+        <section>
+            <h2>Learning</h2>
+            <details>
+                <summary>What is HTML?</summary>
+                <p>HTML provides the structure and meaning of web content.</p>
+            </details>
+            
+            <label for="learning">Learning progress</label>
+            <progress id="learning" value="70" max="100">70%</progress>
+            
+            <label for="score">Quiz score</label>
+            <meter id="score" min="0" max="100" value="85">85%</meter>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Practice only: sending requires a server endpoint at /contact.</p>
+            <form action="/contact" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name"
+                       minlength="3" maxlength="100" autocomplete="name" required>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email"
+                       autocomplete="email" required>
+            
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Website</p>
+    </footer>
+</body>
+</html>
