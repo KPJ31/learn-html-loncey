@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive developer portfolio built with HTML and pure CSS.">
+    <title>Maya Chen | Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="container nav" aria-label="Main navigation">
+            <a class="nav__brand" href="#home">Maya<span aria-hidden="true">.</span></a>
+            <div class="nav__links">
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main id="main" tabindex="-1">
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container">
+                <p class="eyebrow">Developer / curious maker</p>
+                <h1 id="hero-title">Small details.<br>Better websites.</h1>
+                <p class="hero__intro">I'm Maya, a front-end developer turning ideas into clear,
+                    accessible interfaces with HTML and CSS.</p>
+                <a class="btn" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+                <a class="hero__secondary" href="#contact">Let's talk</a>
+            </div>
+        </section>
+        <section class="section container" id="skills" aria-labelledby="skills-title">
+            <p class="eyebrow">01 / Toolkit</p>
+            <h2 class="section-title" id="skills-title">Built on strong foundations.</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <span class="card__number" aria-hidden="true">01</span>
+                    <h3 class="card__title">Semantic HTML</h3>
+                    <p>Meaningful structure, usable forms, and content that makes sense.</p>
+                </article>
+                <article class="card">
+                    <span class="card__number" aria-hidden="true">02</span>
+                    <h3 class="card__title">Responsive CSS</h3>
+                    <p>Flexible layouts that adapt to content, space, and different screens.</p>
+                </article>
+                <article class="card">
+                    <span class="card__number" aria-hidden="true">03</span>
+                    <h3 class="card__title">Accessible UI</h3>
+                    <p>Readable contrast, visible focus, and thoughtful motion.</p>
+                </article>
+            </div>
+        </section>
+        <section class="section container" id="projects" aria-labelledby="projects-title">
+            <p class="eyebrow">02 / Selected practice</p>
+            <h2 class="section-title" id="projects-title">Learning by making.</h2>
+            <div class="card-grid">
+                <article class="card card--featured">
+                    <span class="card__badge">Featured</span>
+                    <p class="eyebrow">Layout / 01</p>
+                    <h3 class="card__title">Studio homepage</h3>
+                    <p>A welcoming landing page with a flexible hero and reusable cards.</p>
+                    <details><summary>Layout notes</summary><p>Flexbox navigation,
+                        Grid cards, and mobile-first content.</p></details>
+                </article>
+                <article class="card">
+                    <p class="eyebrow">Components / 02</p>
+                    <h3 class="card__title">Reading dashboard</h3>
+                    <p>A calm interface for tracking books and reading goals.</p>
+                    <details><summary>Layout notes</summary><p>Named Grid regions
+                        and a shrinkable main column keep the layout robust.</p></details>
+                </article>
+                <article class="card">
+                    <p class="eyebrow">Responsive / 03</p>
+                    <h3 class="card__title">Local café</h3>
+                    <p>A simple menu and contact experience for a neighborhood café.</p>
+                    <details><summary>Layout notes</summary><p>Fluid typography,
+                        responsive imagery, and readable line lengths.</p></details>
+                </article>
+            </div>
+        </section>
+        <section class="section container about" id="about" aria-labelledby="about-title">
+            <img class="about__image" src="images/workspace.svg"
+                 alt="Illustrated workspace with a laptop and a small plant"
+                 width="640" height="480" loading="lazy" decoding="async">
+            <div>
+                <p class="eyebrow">03 / A little about me</p>
+                <h2 class="section-title" id="about-title">Make it useful.<br>Then make it feel right.</h2>
+                <p>I enjoy translating a rough idea into a website that is easy to read and use.
+                    This sample portfolio brings together a day of CSS revision.</p>
+                <p>My process: understand the content, build a flexible structure,
+                    test the details, and keep improving.</p>
+            </div>
+        </section>
+        <section class="section container contact" id="contact" aria-labelledby="contact-title">
+            <div>
+                <p class="eyebrow">04 / Get in touch</p>
+                <h2 class="section-title" id="contact-title">Have something in mind?</h2>
+                <p id="form-note">This is a CSS practice form. The button checks browser
+                    validation only. Nothing is sent or stored.</p>
+            </div>
+            <form class="contact-form" action="#contact" method="get" aria-describedby="form-note">
+                <div class="field">
+                    <label for="name">Name (required)</label>
+                    <input id="name" type="text" autocomplete="name" required>
+                </div>
+                <div class="field">
+                    <label for="email">Email (required)</label>
+                    <input id="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field field--full">
+                    <label for="message">Message (required)</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button class="btn field--full" type="submit">Check practice form</button>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-layout">
+            <p>Maya Chen · HTML + pure CSS</p>
+            <a href="../css-revision.html">Back to CSS revision</a>
+            <a href="#home">Back to top ↑</a>
+        </div>
+    </footer>
+</body>
+</html>

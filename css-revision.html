@@ -1,0 +1,3275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Zero → Advanced | Full One-Day Master Revision</title>
+    <meta
+      name="description"
+      content="An eight-hour CSS revision with examples, challenges, a responsive portfolio, 30 questions, and a checklist."
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18342d;
+        --muted: #4c645c;
+        --accent: #1c5749;
+        --paper: #f5f6ef;
+        --line: #d3dbce;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: system-ui, sans-serif;
+        line-height: 1.7;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 0.22em;
+      }
+      a:hover {
+        color: #103c32;
+      }
+      :focus-visible {
+        outline: 3px solid #914000;
+        outline-offset: 4px;
+      }
+      .skip {
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        padding: 0.8rem;
+        background: white;
+        transform: translateY(-200%);
+      }
+      .skip:focus {
+        transform: translateY(0);
+      }
+      .wrap {
+        width: calc(100% - 2rem);
+        max-width: 1180px;
+        margin-inline: auto;
+      }
+      .masthead {
+        border-bottom: 1px solid var(--line);
+        padding-block: 1rem;
+      }
+      .masthead .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem 2rem;
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .hero {
+        padding-block: clamp(3rem, 7vw, 6rem);
+        background: linear-gradient(120deg, #e7efdb, #f5f6ef);
+      }
+      .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 750;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        color: var(--accent);
+      }
+      h1 {
+        font-size: clamp(2.25rem, 1.25rem + 4vw, 4.5rem);
+        line-height: 1.06;
+        letter-spacing: -0.045em;
+        max-width: 850px;
+        margin-block: 1rem;
+      }
+      h1 small {
+        display: block;
+        font-size: 0.52em;
+        margin-top: 0.7rem;
+        letter-spacing: -0.025em;
+      }
+      .hero p {
+        max-width: 65ch;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+      .tags span {
+        padding: 0.25rem 0.8rem;
+        border: 1px solid #aabca1;
+        border-radius: 2rem;
+        font-size: 0.85rem;
+      }
+      .layout {
+        display: grid;
+        gap: 2.5rem;
+        padding-block: 2.5rem;
+      }
+      .toc {
+        align-self: start;
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: white;
+      }
+      .toc h2 {
+        font-size: 1rem;
+        margin-top: 0;
+      }
+      .toc ol {
+        padding-left: 1.25rem;
+        font-size: 0.85rem;
+      }
+      .toc li {
+        margin-block: 0.45rem;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .toc a:hover {
+        text-decoration: underline;
+      }
+      main {
+        min-width: 0;
+      }
+      main > section {
+        padding: clamp(1rem, 3vw, 2rem);
+        margin-bottom: 2rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: white;
+        scroll-margin-top: 1rem;
+      }
+      h2 {
+        font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+      }
+      h2 > span {
+        display: inline-block;
+        color: #64766c;
+        font-size: 0.65em;
+        margin-right: 0.4rem;
+      }
+      h3 {
+        margin-top: 2rem;
+        font-size: 1.12rem;
+        line-height: 1.4;
+      }
+      p,
+      li,
+      td {
+        overflow-wrap: anywhere;
+      }
+      code {
+        font-family: Consolas, monospace;
+        font-size: 0.9em;
+      }
+      p code,
+      li code {
+        background: #eef2e9;
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+      }
+      li {
+        margin-block: 0.45rem;
+      }
+      .code-label {
+        margin-top: 1rem;
+        padding: 0.4rem 1rem;
+        background: #243f35;
+        color: #d9e8cd;
+        border-radius: 8px 8px 0 0;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      pre {
+        max-width: 100%;
+        margin: 0 0 1rem;
+        padding: 1rem;
+        overflow-x: auto;
+        background: #142e25;
+        color: #edf4e8;
+        border-radius: 0 0 8px 8px;
+        line-height: 1.6;
+        tab-size: 4;
+      }
+      pre code {
+        font-size: 0.82rem;
+      }
+      .table-scroll {
+        max-width: 100%;
+        overflow-x: auto;
+        margin-block: 1rem;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.86rem;
+      }
+      caption {
+        text-align: left;
+        font-weight: 700;
+        padding-bottom: 0.75rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+        min-width: 7rem;
+      }
+      th {
+        background: #eef2e9;
+      }
+      .practice,
+      .notice {
+        padding: 1rem 1.25rem;
+        background: #eef4e5;
+        border-left: 3px solid var(--accent);
+        margin-block: 1.5rem;
+      }
+      .practice h3 {
+        margin-top: 0;
+      }
+      details {
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin-block: 1rem;
+        min-width: 0;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      details[open] summary {
+        margin-bottom: 1rem;
+      }
+      .action {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        background: var(--accent);
+        color: white;
+        border-radius: 6px;
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        text-decoration: none;
+      }
+      .action:hover {
+        color: white;
+        background: #103c32;
+      }
+      .cheat-grid {
+        display: grid;
+        gap: 1rem;
+      }
+      .cheat-grid > div {
+        min-width: 0;
+      }
+      fieldset {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1rem;
+        min-width: 0;
+      }
+      legend {
+        font-weight: 700;
+        padding-inline: 0.5rem;
+      }
+      .check-item {
+        display: flex;
+        gap: 0.7rem;
+        align-items: baseline;
+        padding: 0.35rem;
+        cursor: pointer;
+      }
+      .check-item input {
+        accent-color: var(--accent);
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+      .check-item input:checked + span {
+        text-decoration: line-through;
+        color: var(--muted);
+      }
+      footer {
+        padding-block: 2rem;
+        border-top: 1px solid var(--line);
+        font-size: 0.9rem;
+      }
+      @media (min-width: 64rem) {
+        .layout {
+          grid-template-columns: 230px minmax(0, 1fr);
+        }
+        .toc {
+          position: sticky;
+          top: 1rem;
+          max-height: calc(100vh - 2rem);
+          overflow-y: auto;
+        }
+      }
+      @media print {
+        body {
+          background: white;
+          color: black;
+          font-size: 10pt;
+        }
+        .wrap {
+          width: 100%;
+        }
+        .layout {
+          display: block;
+        }
+        .toc,
+        .skip,
+        .masthead {
+          display: none;
+        }
+        .hero {
+          padding: 1rem 0;
+        }
+        main > section {
+          border: 0;
+          padding: 0;
+          break-before: page;
+        }
+        pre {
+          white-space: pre-wrap;
+          overflow: visible;
+          color: black;
+          background: #eee;
+        }
+        .code-label {
+          background: #ddd;
+          color: black;
+        }
+        .table-scroll {
+          overflow: visible;
+        }
+        th,
+        td {
+          min-width: 0;
+        }
+        h2,
+        h3 {
+          break-after: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to revision</a>
+    <div class="masthead">
+      <div class="wrap">
+        <span class="brand">THE REVISION DESK / CSS</span
+        ><a href="index.html">← HTML revision</a>
+      </div>
+    </div>
+    <header class="hero">
+      <div class="wrap">
+        <p class="eyebrow">15 books. One focused day.</p>
+        <h1>CSS Zero → Advanced<small>Full One-Day Master Revision</small></h1>
+        <p>
+          A practical reset for everything you have already learned. Remember
+          the rule, write the code, test the result, and build something real.
+        </p>
+        <p><strong>Review → See Example → Code → Practice → Check</strong></p>
+        <div class="tags">
+          <span>8 focused hours</span><span>8 sessions</span
+          ><span>HTML + pure CSS</span><span>1 complete project</span>
+        </div>
+      </div>
+    </header>
+    <div class="layout wrap">
+      <nav class="toc" aria-label="Course contents">
+        <h2>Today’s route</h2>
+        <ol>
+          <li><a href="#schedule">Study schedule</a></li>
+          <li><a href="#session-1">Fundamentals + box model</a></li>
+          <li><a href="#session-2">Display + positioning</a></li>
+          <li><a href="#session-3">Flexbox + Grid</a></li>
+          <li><a href="#session-4">Responsive + typography</a></li>
+          <li><a href="#session-5">Selectors + animations</a></li>
+          <li><a href="#session-6">Modern CSS + components</a></li>
+          <li><a href="#session-7">Architecture + professional CSS</a></li>
+          <li><a href="#session-8">Final project</a></li>
+          <li><a href="#cheat-sheet">CSS cheat sheet</a></li>
+          <li><a href="#book-map">15-book map</a></li>
+          <li><a href="#questions">30 questions</a></li>
+          <li><a href="#answers">Answers</a></li>
+          <li><a href="#challenge">60-minute challenge</a></li>
+          <li><a href="#checklist">Professional checklist</a></li>
+        </ol>
+        <p>
+          Print tip: expand the examples and answers you want to include before
+          printing.
+        </p>
+      </nav>
+      <main id="main">
+        <section id="schedule" aria-labelledby="schedule-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="schedule-title"><span>01</span> One-Day Study Schedule</h2>
+          <p>
+            <strong>Eight focused hours + one lunch break.</strong> You have
+            already studied the 15 books. Refresh the essentials, write code,
+            and test what you remember. The final 60-minute challenge is
+            optional extra practice after this day.
+          </p>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="Your one-day schedule"
+          >
+            <table>
+              <caption>
+                Your one-day schedule
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Session</th>
+                  <th scope="col">Focus</th>
+                  <th scope="col">Books</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>9:00–10:00 AM</td>
+                  <td>1</td>
+                  <td>Fundamentals + Box Model</td>
+                  <td>01–02</td>
+                </tr>
+                <tr>
+                  <td>10:00–11:00 AM</td>
+                  <td>2</td>
+                  <td>Display + Positioning</td>
+                  <td>03</td>
+                </tr>
+                <tr>
+                  <td>11:00 AM–12:00 PM</td>
+                  <td>3</td>
+                  <td>Flexbox + Grid</td>
+                  <td>04–05</td>
+                </tr>
+                <tr>
+                  <td>12:00–1:00 PM</td>
+                  <td>Break</td>
+                  <td>Lunch and time away from the screen</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>1:00–2:00 PM</td>
+                  <td>4</td>
+                  <td>Responsive + Typography + Visual Styling</td>
+                  <td>06–07</td>
+                </tr>
+                <tr>
+                  <td>2:00–3:00 PM</td>
+                  <td>5</td>
+                  <td>Selectors + Animations</td>
+                  <td>08–09</td>
+                </tr>
+                <tr>
+                  <td>3:00–4:00 PM</td>
+                  <td>6</td>
+                  <td>Modern CSS + Components</td>
+                  <td>10–11</td>
+                </tr>
+                <tr>
+                  <td>4:00–5:00 PM</td>
+                  <td>7</td>
+                  <td>Architecture + Advanced UI + Professional CSS</td>
+                  <td>12–14</td>
+                </tr>
+                <tr>
+                  <td>5:00–6:00 PM</td>
+                  <td>8</td>
+                  <td>Final Project + Knowledge Check</td>
+                  <td>15</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Your rhythm for Sessions 1–7</h3>
+          <p>
+            <strong
+              >10 min review → 10 min examples → 25 min coding → 10 min practice
+              → 5 min check.</strong
+            >
+            Split Session 3 between Flexbox and Grid. Session 8 reserves 45
+            minutes for building and testing, then 15 minutes for the questions,
+            answers, and final checklist.
+          </p>
+          <h3>Set up once in VS Code</h3>
+          <p>
+            Create <code>practice/index.html</code> and
+            <code>practice/style.css</code>. Open the HTML in a browser and
+            refresh after saving. Replace the main content with each example.
+            Keep the small CSS base, replacing the session-specific rules
+            between sessions to avoid collisions.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;CSS practice&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;&lt;!-- Paste the session HTML here. --&gt;&lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #f5f5f5;
+}</code></pre>
+        </section>
+        <section id="session-1" aria-labelledby="session-1-title">
+          <p class="eyebrow">9:00–10:00 AM · Books 01–02</p>
+          <h2 id="session-1-title">
+            <span>02</span> Session 1 · Fundamentals + Box Model
+          </h2>
+          <h3>Review: syntax, selectors, and the cascade</h3>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>/* selector { property: value; } */
+body {
+    background-color: #f5f5f5;
+    color: #222;
+    font-family: Arial, sans-serif;
+}
+p { color: #333; }              /* Element */
+.card { background: white; }    /* Reusable class */
+#header { background: #111827; } /* Unique ID */
+h1, h2, h3 { font-weight: 700; } /* Selector list */</code></pre>
+          <p>
+            For ordinary declarations in the same origin and layer, higher
+            specificity wins; equal specificity uses later source order. IDs
+            outweigh classes, which outweigh element selectors. Inherited text
+            styles fill in when no value is specified on the element. Prefer
+            classes over escalating specificity.
+          </p>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>/* Alternatives: choose one color declaration at a time. */
+.example {
+    color: red;
+    color: #2563eb;
+    color: rgb(37, 99, 235);
+    color: rgba(37, 99, 235, 0.5); /* 50% alpha */
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>px</td>
+                  <td>A CSS pixel, not necessarily a device pixel.</td>
+                  <td>Precise borders and small details.</td>
+                  <td>Use rem for text that follows the root size.</td>
+                </tr>
+                <tr>
+                  <td>%</td>
+                  <td>A percentage of a property-dependent reference.</td>
+                  <td>Fluid width: 80%.</td>
+                  <td>
+                    Percentage height usually needs a definite parent height.
+                  </td>
+                </tr>
+                <tr>
+                  <td>rem</td>
+                  <td>Relative to root font size.</td>
+                  <td>Consistent type: font-size: 1rem.</td>
+                  <td>Respect user font preferences.</td>
+                </tr>
+                <tr>
+                  <td>em</td>
+                  <td>Relative to font size; font-size uses the parent.</td>
+                  <td>Component-relative padding: 2em.</td>
+                  <td>Nested font-size values can compound.</td>
+                </tr>
+                <tr>
+                  <td>vw / vh</td>
+                  <td>1% of viewport width / height.</td>
+                  <td>width: 50vw; min-height: 100vh.</td>
+                  <td>
+                    vw can overflow with scrollbars; modern height units come in
+                    Session 6.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>See example: the box model</h3>
+          <p>
+            <strong>Content → padding → border → margin.</strong> Padding sits
+            inside the border; margin sits outside. Background paints through
+            padding; margin is transparent.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;article class=&quot;card&quot;&gt;
+    &lt;h2&gt;Maya / CSS learner&lt;/h2&gt;
+    &lt;p&gt;I build clear, responsive interfaces.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.card {
+    width: 300px;
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    background: white;
+    border-radius: 12px;
+    box-sizing: border-box;
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>width / height</td>
+                  <td>Preferred box dimensions.</td>
+                  <td>Control known dimensions.</td>
+                  <td>Avoid fixed heights on variable text.</td>
+                </tr>
+                <tr>
+                  <td>min-width / max-width</td>
+                  <td>Lower / upper width limits.</td>
+                  <td>Flexible sizing with boundaries.</td>
+                  <td>min-width: 0 lets flex/grid children shrink.</td>
+                </tr>
+                <tr>
+                  <td>min-height / max-height</td>
+                  <td>Lower / upper height limits.</td>
+                  <td>Minimum hero space or capped panels.</td>
+                  <td>A max-height may need overflow: auto.</td>
+                </tr>
+                <tr>
+                  <td>padding / border / margin</td>
+                  <td>Inner spacing / edge / outer spacing.</td>
+                  <td>Separate content and boxes.</td>
+                  <td>Vertical margins can collapse in normal block flow.</td>
+                </tr>
+                <tr>
+                  <td>box-sizing: border-box</td>
+                  <td>Includes padding and border in declared width.</td>
+                  <td>Predictable sizing.</td>
+                  <td>
+                    This 300px card has 258px of content; margin remains
+                    outside.
+                  </td>
+                </tr>
+                <tr>
+                  <td>overflow / overflow-x / overflow-y</td>
+                  <td>
+                    Control overflow on both / horizontal / vertical axes.
+                  </td>
+                  <td>auto creates scrolling when needed.</td>
+                  <td>hidden clips; do not hide layout bugs with it.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.notes {
+    min-height: 4rem;
+    max-height: 10rem;
+    overflow-y: auto;
+}
+.table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+}</code></pre>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>Build the profile card from memory.</li>
+              <li>
+                Change padding from 20px to 30px. Predict the outer width.
+              </li>
+              <li>
+                Add a long paragraph; try max-height: 120px and overflow: auto.
+              </li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>Padding increases a content-box width.</li>
+            <li>Fixed text heights can clip content at zoom.</li>
+            <li>
+              overflow: hidden can conceal the symptom without fixing the
+              sizing.
+            </li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>
+                With border-box, the border width stays 300px unless max-width
+                constrains it.
+              </li>
+              <li>
+                With content-box and 20px padding, it would be 342px wide.
+              </li>
+              <li>Text remains reachable in the capped scrolling box.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-2" aria-labelledby="session-2-title">
+          <p class="eyebrow">10:00–11:00 AM · Book 03</p>
+          <h2 id="session-2-title">
+            <span>03</span> Session 2 · Display + Positioning
+          </h2>
+          <h3>Review &amp; see: display</h3>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;div class=&quot;display-demo&quot;&gt;
+    &lt;span class=&quot;block&quot;&gt;Block A&lt;/span&gt;&lt;span class=&quot;block&quot;&gt;Block B&lt;/span&gt;
+    &lt;span class=&quot;inline&quot;&gt;Inline A&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;Inline B&lt;/span&gt;
+    &lt;span class=&quot;inline-block&quot;&gt;Inline-block A&lt;/span&gt;
+    &lt;span class=&quot;inline-block&quot;&gt;Inline-block B&lt;/span&gt;
+    &lt;span class=&quot;none&quot;&gt;Not displayed&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.display-demo span {
+    width: 150px;
+    padding: 8px;
+    border: 1px solid #2563eb;
+}
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.none { display: none; }</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>block / inline / inline-block / none</td>
+                  <td>New line / text flow / inline box / no box.</td>
+                  <td>Choose participation in normal flow.</td>
+                  <td>
+                    Ordinary non-replaced inline elements ignore width/height;
+                    none also removes accessibility exposure.
+                  </td>
+                </tr>
+                <tr>
+                  <td>position: static</td>
+                  <td>Normal flow, the default.</td>
+                  <td>Let layout do the work.</td>
+                  <td>Offsets do not move it.</td>
+                </tr>
+                <tr>
+                  <td>position: relative</td>
+                  <td>Keeps flow space, can be offset.</td>
+                  <td>Anchor an absolute child.</td>
+                  <td>Neighbors do not move with the offset.</td>
+                </tr>
+                <tr>
+                  <td>position: absolute</td>
+                  <td>Removed from flow.</td>
+                  <td>Place a badge inside a card.</td>
+                  <td>Usually anchors to the nearest positioned ancestor.</td>
+                </tr>
+                <tr>
+                  <td>position: fixed</td>
+                  <td>Removed from flow, usually viewport-relative.</td>
+                  <td>Keep a help link visible.</td>
+                  <td>
+                    A transformed ancestor can change the containing block.
+                  </td>
+                </tr>
+                <tr>
+                  <td>position: sticky</td>
+                  <td>In flow, then constrained by a scroll threshold.</td>
+                  <td>Keep navigation available.</td>
+                  <td>
+                    Needs an inset, space to move, and a suitable scroll
+                    ancestor.
+                  </td>
+                </tr>
+                <tr>
+                  <td>top / right / bottom / left / inset</td>
+                  <td>Offsets from containing-block edges.</td>
+                  <td>Place positioned boxes.</td>
+                  <td>
+                    inset: 0 sets all four edges; static boxes ignore offsets.
+                  </td>
+                </tr>
+                <tr>
+                  <td>z-index</td>
+                  <td>Stacking level within a stacking context.</td>
+                  <td>Layer navigation above content.</td>
+                  <td>
+                    Large numbers cannot escape an ancestor stacking context;
+                    flex/grid items can also use z-index.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>See example: positioning</h3>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;nav class=&quot;navbar&quot; aria-label=&quot;Practice navigation&quot;&gt;
+    &lt;a href=&quot;#profile&quot;&gt;Profile&lt;/a&gt;&lt;a href=&quot;#help&quot;&gt;Help&lt;/a&gt;
+&lt;/nav&gt;
+&lt;article class=&quot;card&quot; id=&quot;profile&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;Available&lt;/span&gt;
+    &lt;h1&gt;Maya&lt;/h1&gt;&lt;p&gt;Front-end developer.&lt;/p&gt;
+&lt;/article&gt;
+&lt;section class=&quot;long-content&quot; id=&quot;help&quot;&gt;
+    &lt;h2&gt;Help&lt;/h2&gt;&lt;p&gt;Scroll to observe the navbar and help link.&lt;/p&gt;
+&lt;/section&gt;
+&lt;a class=&quot;help-button&quot; href=&quot;#help&quot;&gt;Help&lt;/a&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem;
+    background: white;
+}
+.card {
+    position: relative;
+    padding: 4rem 1rem 1rem;
+    border: 1px solid #ddd;
+}
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.help-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 0.75rem;
+    background: #1d4ed8;
+    color: white;
+}
+.long-content { min-height: 150vh; }</code></pre>
+          <h3>Float: its original job</h3>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>/* An image inside an article can wrap surrounding text. */
+.article-photo {
+    float: left;
+    width: 100px;
+    margin: 0 1rem 0.5rem 0;
+}
+.article { display: flow-root; } /* Contains the float */</code></pre>
+          <p>
+            Float is useful for text wrapping. Prefer Flexbox or Grid for page
+            layouts. <code>clear: both</code> moves a following box below
+            floats.
+          </p>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>
+                Build the sticky navbar, relative card, absolute badge, and
+                fixed help link.
+              </li>
+              <li>
+                Remove relative from the card, inspect the badge, then restore
+                it.
+              </li>
+              <li>Scroll and test at a narrow width.</li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>An absolute child needs the intended containing block.</li>
+            <li>
+              Sticky needs a threshold such as top: 0; ancestor overflow
+              matters.
+            </li>
+            <li>
+              Increasing z-index cannot cross an ancestor stacking context.
+            </li>
+            <li>
+              Do not use display: none on a label meant to remain accessible.
+            </li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>
+                The badge stays inside the card without covering its heading.
+              </li>
+              <li>Sticky stops at its containing block boundary.</li>
+              <li>
+                The fixed link does not obscure content; add bottom space if
+                necessary.
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-3" aria-labelledby="session-3-title">
+          <p class="eyebrow">11:00 AM–12:00 PM · Books 04–05</p>
+          <h2 id="session-3-title">
+            <span>04</span> Session 3 · Flexbox + Grid
+          </h2>
+          <h3>Part A · Flexbox</h3>
+          <p>
+            <strong>Main axis</strong> follows flex-direction;
+            <strong>cross axis</strong> is perpendicular. With row in ordinary
+            horizontal writing, main is horizontal. With column, main is
+            vertical.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;nav class=&quot;navbar&quot; aria-label=&quot;Practice navigation&quot;&gt;
+    &lt;a href=&quot;#&quot;&gt;Maya&lt;/a&gt;
+    &lt;div class=&quot;nav-links&quot;&gt;&lt;a href=&quot;#work&quot;&gt;Work&lt;/a&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/div&gt;
+&lt;/nav&gt;
+&lt;section class=&quot;cards&quot; id=&quot;work&quot; aria-label=&quot;Projects&quot;&gt;
+    &lt;article class=&quot;card&quot;&gt;Portfolio&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;Shop&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;Dashboard&lt;/article&gt;
+&lt;/section&gt;
+&lt;section id=&quot;about&quot;&gt;&lt;h2&gt;About&lt;/h2&gt;&lt;p&gt;I enjoy CSS.&lt;/p&gt;&lt;/section&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card {
+    flex: 1 1 250px;
+    min-width: 0;
+    padding: 20px;
+    background: white;
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>display: flex</td>
+                  <td>Creates a flex container.</td>
+                  <td>Align direct children in one dimension.</td>
+                  <td>
+                    Container gets alignment properties; children get flex.
+                  </td>
+                </tr>
+                <tr>
+                  <td>flex-direction</td>
+                  <td>Sets main-axis direction.</td>
+                  <td>Switch a row into a column.</td>
+                  <td>justify-content follows the main axis.</td>
+                </tr>
+                <tr>
+                  <td>justify-content / align-items</td>
+                  <td>Main-axis distribution / cross-axis alignment.</td>
+                  <td>Center or separate items.</td>
+                  <td>Distribution requires free space.</td>
+                </tr>
+                <tr>
+                  <td>gap / flex-wrap</td>
+                  <td>Space between items / allow new lines.</td>
+                  <td>Responsive groups without margin hacks.</td>
+                  <td>gap does not add outer padding.</td>
+                </tr>
+                <tr>
+                  <td>flex-grow / flex-shrink / flex-basis</td>
+                  <td>Growth / shrink factor / initial main size.</td>
+                  <td>flex: 1 1 250px shares space from a 250px basis.</td>
+                  <td>Basis is not a minimum width.</td>
+                </tr>
+                <tr>
+                  <td>order / align-self</td>
+                  <td>Visual order / one item’s cross alignment.</td>
+                  <td>Adjust an individual item.</td>
+                  <td>order does not change reading or keyboard order.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Part B · Grid</h3>
+          <p>
+            <strong>Flexbox = mostly one-dimensional layouts.</strong>
+            <strong>Grid = mostly two-dimensional layouts.</strong> Use both:
+            flex for a card’s controls, grid for the collection. Change
+            class="cards" to class="grid" in the HTML:
+          </p>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+/* Try instead: fluid columns. */
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+/* Safer when the container can be narrower than 250px. */
+.grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>grid-template-columns / grid-template-rows</td>
+                  <td>Define column / row tracks.</td>
+                  <td>Coordinate two-dimensional layout.</td>
+                  <td>Extra content can create implicit rows.</td>
+                </tr>
+                <tr>
+                  <td>repeat() / fr</td>
+                  <td>Repeat tracks / share remaining track space.</td>
+                  <td>repeat(3, 1fr) makes three shares.</td>
+                  <td>
+                    Content minimums may cause overflow; minmax(0, 1fr) permits
+                    shrinking.
+                  </td>
+                </tr>
+                <tr>
+                  <td>minmax() / auto-fit</td>
+                  <td>Track range / fit and collapse unused tracks.</td>
+                  <td>Fluid columns with fewer breakpoints.</td>
+                  <td>
+                    A fixed minimum wider than the container can overflow.
+                  </td>
+                </tr>
+                <tr>
+                  <td>gap</td>
+                  <td>Gutters between tracks.</td>
+                  <td>Consistent spacing.</td>
+                  <td>Gaps are accounted for before fr distributes space.</td>
+                </tr>
+                <tr>
+                  <td>grid-column / grid-row</td>
+                  <td>Placement by lines or spans.</td>
+                  <td>Let featured content span tracks.</td>
+                  <td>
+                    A two-column span can create an unwanted column on mobile.
+                  </td>
+                </tr>
+                <tr>
+                  <td>grid-template-areas</td>
+                  <td>Named rectangular regions.</td>
+                  <td>Readable page maps.</td>
+                  <td>Each named area must form one rectangle.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;div class=&quot;layout&quot;&gt;
+    &lt;header class=&quot;layout-header&quot;&gt;Header&lt;/header&gt;
+    &lt;aside class=&quot;layout-sidebar&quot;&gt;Filters&lt;/aside&gt;
+    &lt;div class=&quot;layout-content&quot;&gt;Results&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.layout {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: &quot;header&quot; &quot;sidebar&quot; &quot;content&quot;;
+}
+.layout-header { grid-area: header; }
+.layout-sidebar { grid-area: sidebar; }
+.layout-content { grid-area: content; }
+@media (min-width: 48rem) {
+    .layout {
+        grid-template-columns: 12rem minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        grid-template-areas: &quot;header header&quot; &quot;sidebar content&quot;;
+    }
+}
+/* Alternate line placement: grid-column: 1 / -1; grid-row: 1; */</code></pre>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>Build a Flexbox navbar and Grid card section.</li>
+              <li>
+                Change flex-direction to column; predict which alignment
+                property moves what.
+              </li>
+              <li>
+                Compare the fixed grid and auto-fit at 320px, 768px, and 1200px.
+              </li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>justify-content on an item does not align its siblings.</li>
+            <li>Long content may need min-width: 0.</li>
+            <li>Fixed columns need a mobile plan.</li>
+            <li>
+              Visual reordering can disconnect keyboard order from the display.
+            </li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>Navbar links wrap rather than disappear.</li>
+              <li>
+                Container alignment and item flex rules are on the correct
+                elements.
+              </li>
+              <li>
+                The safe minmax version fits a container narrower than 250px.
+              </li>
+              <li>DOM order remains meaningful with styles removed.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-4" aria-labelledby="session-4-title">
+          <p class="eyebrow">1:00–2:00 PM · Books 06–07</p>
+          <h2 id="session-4-title">
+            <span>05</span> Session 4 · Responsive + Typography + Visual Styling
+          </h2>
+          <h3>Review: mobile first</h3>
+          <p>
+            Write the smallest useful layout first, then add space and columns
+            when the content needs them. Keep the viewport meta tag from the
+            starter.
+          </p>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>.container { padding: 16px; }
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .container { padding: 32px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* Other common examples, not mandatory device categories: */
+@media (min-width: 640px) { /* Only if content needs a change. */ }
+@media (min-width: 1280px) { /* Only if content needs a change. */ }</code></pre>
+          <p>
+            <strong
+              >Choose breakpoints by resizing until the layout needs to
+              change.</strong
+            >
+            Mobile, tablet, and desktop are useful testing labels, not reliable
+            device detectors.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;section class=&quot;container&quot;&gt;
+    &lt;header class=&quot;hero&quot;&gt;&lt;h1&gt;Projects with purpose&lt;/h1&gt;&lt;/header&gt;
+    &lt;div class=&quot;grid&quot;&gt;
+        &lt;article class=&quot;card&quot;&gt;&lt;h2&gt;Portfolio&lt;/h2&gt;&lt;p&gt;A personal website.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;&lt;h2&gt;Library&lt;/h2&gt;&lt;p&gt;A reading interface.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;card&quot;&gt;&lt;h2&gt;Studio&lt;/h2&gt;&lt;p&gt;A business homepage.&lt;/p&gt;&lt;/article&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>body {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+img { max-width: 100%; height: auto; display: block; }
+.card {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.hero {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    background: linear-gradient(135deg, #1e40af, #5b21b6);
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>@media (min-width: …)</td>
+                  <td>Styles above a viewport threshold.</td>
+                  <td>Enhance the narrow base layout.</td>
+                  <td>
+                    Place overrides after base styles and test both sides of
+                    each breakpoint.
+                  </td>
+                </tr>
+                <tr>
+                  <td>max-width: 100%; height: auto</td>
+                  <td>Caps image width and preserves its ratio.</td>
+                  <td>Prevent overflow and distortion.</td>
+                  <td>HTML width/height reserve space before image loading.</td>
+                </tr>
+                <tr>
+                  <td>font-family / font-size / line-height</td>
+                  <td>Typeface / text size / line spacing.</td>
+                  <td>Make paragraphs readable.</td>
+                  <td>
+                    Unitless line-height inherits well; test enlarged text.
+                  </td>
+                </tr>
+                <tr>
+                  <td>font-weight / letter-spacing</td>
+                  <td>Weight / space between letters.</td>
+                  <td>Establish hierarchy.</td>
+                  <td>Tight tracking suits some headings, not all text.</td>
+                </tr>
+                <tr>
+                  <td>background / linear-gradient()</td>
+                  <td>Paints a surface or generated image.</td>
+                  <td>Group sections and add emphasis.</td>
+                  <td>Check contrast across the entire gradient.</td>
+                </tr>
+                <tr>
+                  <td>border-radius / box-shadow</td>
+                  <td>Rounded corners / visual shadow.</td>
+                  <td>Separate surfaces.</td>
+                  <td>Shadows do not alter layout dimensions.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>Adapt the card section to mobile, tablet, and desktop.</li>
+              <li>
+                Add a local image with meaningful alt text and intrinsic
+                dimensions.
+              </li>
+              <li>Test 320px, 768px, 1200px, and widths near breakpoints.</li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>Desktop fixed widths can force horizontal scrolling.</li>
+            <li>
+              Do not copy popular breakpoints without testing your content.
+            </li>
+            <li>
+              Fixed image heights can distort images unless cropping is
+              intentional.
+            </li>
+            <li>Pale text on a gradient may lack contrast.</li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>
+                Cards move from one to two to three columns without overlap.
+              </li>
+              <li>Images keep their proportions.</li>
+              <li>At 200% zoom, text and controls remain usable.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-5" aria-labelledby="session-5-title">
+          <p class="eyebrow">2:00–3:00 PM · Books 08–09</p>
+          <h2 id="session-5-title">
+            <span>06</span> Session 5 · Selectors + Animations
+          </h2>
+          <h3>Review: target precisely</h3>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>.parent p { color: #334155; }       /* Any descendant p */
+.parent &gt; p { font-weight: 700; }   /* Direct child p */
+h2 + p { margin-top: 0; }          /* Next sibling p */
+h2 ~ p { line-height: 1.7; }       /* All later sibling p elements */
+input[type=&quot;email&quot;] { border-color: #2563eb; }
+button:hover { background: #1e40af; }
+input:focus { outline: 3px solid #1d4ed8; }
+li:first-child { font-weight: 700; }
+li:last-child { margin-bottom: 0; }
+li:nth-child(2) { color: #1e40af; }</code></pre>
+          <p>
+            <strong>Pseudo-class:</strong> a state or structural condition, such
+            as :hover. <strong>Pseudo-element:</strong> a generated or partial
+            element, such as ::after. Generated content should decorate rather
+            than carry essential instructions.
+          </p>
+          <h3>See example: heading, button, and card</h3>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;section class=&quot;parent&quot;&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Selected work&lt;/h2&gt;
+    &lt;p&gt;Small interfaces, carefully built.&lt;/p&gt;
+    &lt;article class=&quot;card&quot;&gt;&lt;h3&gt;Portfolio&lt;/h3&gt;&lt;p&gt;Hover over this card.&lt;/p&gt;&lt;/article&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Practice button&lt;/button&gt;
+    &lt;label for=&quot;email-demo&quot;&gt;Email&lt;/label&gt;
+    &lt;input id=&quot;email-demo&quot; type=&quot;email&quot;&gt;
+    &lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;li&gt;CSS&lt;/li&gt;&lt;li&gt;Accessibility&lt;/li&gt;&lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>.title { position: relative; padding-bottom: 0.75rem; }
+.title::before { content: &quot;&quot;; } /* Empty until given visual styles. */
+.title::after {
+    content: &quot;&quot;;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 3px;
+    background: #2563eb;
+}
+.button {
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: #1d4ed8;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.button:hover { background: #1e40af; transform: translateY(-2px); }
+.button:focus-visible { outline: 3px solid #111827; outline-offset: 3px; }
+.card {
+    padding: 1.5rem;
+    background: white;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease;
+}
+.card:hover { transform: translateY(-5px); }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .button:hover, .card:hover { transform: none; }
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>transition</td>
+                  <td>Interpolates a property when its value changes.</td>
+                  <td>Smooth interaction feedback.</td>
+                  <td>
+                    List specific properties; values must change for a
+                    transition.
+                  </td>
+                </tr>
+                <tr>
+                  <td>transform</td>
+                  <td>Visually moves, scales, or rotates a box.</td>
+                  <td>Movement without changing normal-flow space.</td>
+                  <td>
+                    Neighbors do not move; transforms can create stacking
+                    contexts.
+                  </td>
+                </tr>
+                <tr>
+                  <td>animation / @keyframes</td>
+                  <td>Runs a named timeline of values.</td>
+                  <td>A brief entrance without a hover trigger.</td>
+                  <td>Avoid endless decorative motion.</td>
+                </tr>
+                <tr>
+                  <td>prefers-reduced-motion</td>
+                  <td>Queries the user’s motion preference.</td>
+                  <td>Reduce non-essential motion.</td>
+                  <td>
+                    A targeted accessibility override differs from using
+                    !important everywhere.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>/* Try separately; later transform declarations replace earlier ones. */
+.demo { transform: translateX(10px); }
+.demo { transform: translateY(-5px); }
+.demo { transform: scale(1.05); }
+.demo { transform: rotate(5deg); }
+/* Combine functions when both are needed. */
+.demo { transform: translateY(-5px) scale(1.05); }</code></pre>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>
+                Build the animated button, hover card, and pseudo-element
+                underline.
+              </li>
+              <li>
+                Reload to see fadeIn. Enable reduced motion in the OS or
+                DevTools and reload.
+              </li>
+              <li>Predict what each combinator matches before inspecting.</li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>
+              A descendant space and direct-child > mean different things.
+            </li>
+            <li>
+              nth-child counts positions among siblings, not only a matching
+              element type.
+            </li>
+            <li>Pseudo-elements need content and visual styling.</li>
+            <li>
+              Animating width/top repeatedly may cause layout work; prefer
+              transform/opacity where suitable.
+            </li>
+            <li>Hover-only cues do not help keyboard or touch users.</li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>The underline needs content: "" to generate its box.</li>
+              <li>Keyboard focus is visible without hover.</li>
+              <li>
+                Reduced motion removes movement and makes timing effectively
+                immediate.
+              </li>
+              <li>Only the intended sibling/descendant elements match.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-6" aria-labelledby="session-6-title">
+          <p class="eyebrow">3:00–4:00 PM · Books 10–11</p>
+          <h2 id="session-6-title">
+            <span>07</span> Session 6 · Modern CSS + Components
+          </h2>
+          <h3>Review: reusable values and fluid sizing</h3>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>:root {
+    --primary: #1d4ed8;
+    --text: #111827;
+    --background: #f8fafc;
+    --radius: 12px;
+}
+body { color: var(--text); background: var(--background); }
+.shell { width: calc(100% - 40px); max-width: 1100px; margin: auto; }
+h1 { font-size: clamp(2rem, 1rem + 4vw, 4rem); }
+.full-height {
+    min-height: 100vh; /* Fallback */
+    min-height: 100dvh;
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>var(--name, fallback)</td>
+                  <td>Reads a custom property.</td>
+                  <td>Share colors, spacing, and component values.</td>
+                  <td>
+                    Names are case-sensitive; custom properties inherit and can
+                    be scoped.
+                  </td>
+                </tr>
+                <tr>
+                  <td>calc()</td>
+                  <td>Arithmetic with compatible values.</td>
+                  <td>Subtract fixed gutters from fluid width.</td>
+                  <td>Use spaces around + and -.</td>
+                </tr>
+                <tr>
+                  <td>min() / max()</td>
+                  <td>Choose smallest / largest evaluated value.</td>
+                  <td>Cap a width or set a lower bound.</td>
+                  <td>min(100%, 70rem) fits its parent with a cap.</td>
+                </tr>
+                <tr>
+                  <td>clamp(min, preferred, max)</td>
+                  <td>Bounds a fluid preferred value.</td>
+                  <td>Responsive headings with limits.</td>
+                  <td>
+                    clamp(2rem, 5vw, 4rem) is common; mixing rem into the
+                    preferred term helps text scaling. Test zoom.
+                  </td>
+                </tr>
+                <tr>
+                  <td>svh / lvh / dvh</td>
+                  <td>Small / large / dynamic viewport height.</td>
+                  <td>Handle changing mobile browser controls.</td>
+                  <td>
+                    svh stays stable with controls visible; lvh uses the large
+                    viewport; dvh changes as controls change.
+                  </td>
+                </tr>
+                <tr>
+                  <td>container-type: inline-size / @container</td>
+                  <td>Creates / queries a width-query container.</td>
+                  <td>Adapt a component to allocated space.</td>
+                  <td>
+                    The styled card must be a descendant of the queried wrapper.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>See &amp; code: a small component kit</h3>
+          <p>
+            Use this HTML and CSS below the variables. The panel is a
+            <strong>static modal-style surface</strong>. A real modal also needs
+            opening, closing, focus management, and Escape behavior; this inline
+            panel makes no modal claim.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;nav class=&quot;navbar&quot; aria-label=&quot;Component navigation&quot;&gt;
+    &lt;a href=&quot;#kit&quot;&gt;UI kit&lt;/a&gt;&lt;a href=&quot;#form&quot;&gt;Form&lt;/a&gt;
+&lt;/nav&gt;
+&lt;div class=&quot;card-wrapper&quot; id=&quot;kit&quot;&gt;
+    &lt;article class=&quot;card&quot;&gt;
+        &lt;div&gt;&lt;h1&gt;Starter card&lt;/h1&gt;&lt;p&gt;A reusable surface.&lt;/p&gt;&lt;/div&gt;
+        &lt;a class=&quot;btn&quot; href=&quot;#form&quot;&gt;Try the form&lt;/a&gt;
+    &lt;/article&gt;
+&lt;/div&gt;
+&lt;form id=&quot;form&quot;&gt;
+    &lt;p&gt;Practice only: nothing is sent.&lt;/p&gt;
+    &lt;label for=&quot;kit-email&quot;&gt;Email (required)&lt;/label&gt;
+    &lt;input class=&quot;form-control&quot; id=&quot;kit-email&quot; name=&quot;email&quot;
+           type=&quot;email&quot; autocomplete=&quot;email&quot; required&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Preview only&lt;/button&gt;
+&lt;/form&gt;
+&lt;div class=&quot;table-wrap&quot; tabindex=&quot;0&quot; role=&quot;region&quot; aria-label=&quot;Skill levels&quot;&gt;
+    &lt;table&gt;
+        &lt;caption&gt;Skills to revise&lt;/caption&gt;
+        &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Skill&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Level&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+        &lt;tbody&gt;&lt;tr&gt;&lt;th scope=&quot;row&quot;&gt;CSS&lt;/th&gt;&lt;td&gt;Practicing&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+&lt;section class=&quot;panel&quot; aria-labelledby=&quot;panel-title&quot;&gt;
+    &lt;h2 id=&quot;panel-title&quot;&gt;Review complete?&lt;/h2&gt;
+    &lt;p&gt;An inline panel styled like a dialog surface.&lt;/p&gt;
+    &lt;a class=&quot;btn&quot; href=&quot;#kit&quot;&gt;Back to kit&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn:hover { background: #1e40af; }
+:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
+.navbar { display: flex; flex-wrap: wrap; gap: 1rem; padding: 1rem 0; }
+.card-wrapper { container-type: inline-size; }
+.card, .panel {
+    padding: 1.5rem;
+    margin-block: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius);
+    background: white;
+}
+@container (min-width: 500px) {
+    .card { display: flex; align-items: center; gap: 2rem; }
+}
+form { max-width: 32rem; }
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #64748b;
+    border-radius: 8px;
+    font: inherit;
+}
+.form-control:focus {
+    outline: 3px solid #1d4ed8;
+    outline-offset: 2px;
+    border-color: #2563eb;
+}
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem; border: 1px solid #64748b; text-align: left; }
+.panel { max-width: 30rem; box-shadow: 0 10px 30px rgb(0 0 0 / 0.1); }</code></pre>
+          <p>
+            A visible label identifies the input; a placeholder is not a label.
+            The stronger border and focus ring make boundaries easier to see. A
+            real submission needs an application endpoint and suitable
+            validation.
+          </p>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>Build a reusable button, card, input, and navbar.</li>
+              <li>Change --primary once and observe all linked components.</li>
+              <li>
+                Constrain card-wrapper to 450px, then 550px, without changing
+                the viewport.
+              </li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>Misspelled variable names can invalidate a declaration.</li>
+            <li>
+              A size query cannot style its own queried container based on that
+              size.
+            </li>
+            <li>Removing outlines without a replacement hides focus.</li>
+            <li>A styled div is not a button.</li>
+            <li>Modal appearance alone does not implement modal behavior.</li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>The card becomes flex when its container reaches 500px.</li>
+              <li>Tab reaches controls and links with visible focus.</li>
+              <li>The email field has a label and required state.</li>
+              <li>Wide tables scroll locally rather than widening the page.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-7" aria-labelledby="session-7-title">
+          <p class="eyebrow">4:00–5:00 PM · Books 12–14</p>
+          <h2 id="session-7-title">
+            <span>08</span> Session 7 · Architecture + Advanced UI +
+            Professional CSS
+          </h2>
+          <h3>Review: BEM in one minute</h3>
+          <p>
+            <strong>Block:</strong> standalone component.
+            <strong>Element:</strong> a part of it. <strong>Modifier:</strong> a
+            variation. Naming describes intent; it does not add behavior.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;article class=&quot;product-card&quot;&gt;
+    &lt;h2 class=&quot;product-card__title&quot;&gt;Laptop&lt;/h2&gt;
+    &lt;button class=&quot;product-card__button product-card__button--disabled&quot;
+            type=&quot;button&quot; disabled&gt;Sold out&lt;/button&gt;
+&lt;/article&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>.product-card { padding: 1rem; border: 1px solid #cbd5e1; }
+.product-card__title { margin-top: 0; }
+.product-card__button { padding: 0.75rem 1rem; }
+.product-card__button--disabled { opacity: 0.65; cursor: not-allowed; }</code></pre>
+          <h3>Organize for your project size</h3>
+          <div class="code-label">TEXT</div>
+          <pre tabindex="0" aria-label="text example"><code>css/
+    reset.css
+    variables.css
+    base.css
+    layout.css
+    components.css
+    utilities.css
+    responsive.css</code></pre>
+          <p>
+            This is one approach, not the only correct architecture. A small
+            project needs one stylesheet with section comments. Larger projects
+            may split components, colocate responsive rules, and bundle files
+            for delivery.
+          </p>
+          <div class="code-label">CSS</div>
+          <pre tabindex="0" aria-label="css example"><code>/* Repeated styles */
+.card-one { border-radius: 10px; }
+.card-two { border-radius: 10px; }
+.card-three { border-radius: 10px; }
+/* Better: use class=&quot;card&quot; for every instance. */
+.card { border-radius: 10px; }</code></pre>
+          <h3>Advanced responsive UI: sidebar + flexible content</h3>
+          <p>
+            Use Grid for page regions and Flexbox for a toolbar. Keep content
+            shrinkable; let long text wrap and wide tables scroll locally.
+            Container queries adapt components, while viewport queries adapt the
+            page.
+          </p>
+          <div class="code-label">HTML</div>
+          <pre
+            tabindex="0"
+            aria-label="html example"
+          ><code>&lt;div class=&quot;dashboard&quot;&gt;
+    &lt;aside&gt;&lt;h2&gt;Filters&lt;/h2&gt;&lt;p&gt;All projects&lt;/p&gt;&lt;/aside&gt;
+    &lt;section class=&quot;dashboard__main&quot; aria-label=&quot;Results&quot;&gt;
+        &lt;div class=&quot;toolbar&quot;&gt;&lt;h2&gt;Projects&lt;/h2&gt;&lt;a href=&quot;#details&quot;&gt;Details&lt;/a&gt;&lt;/div&gt;
+        &lt;p id=&quot;details&quot; class=&quot;long-text&quot;&gt;Long URLs and filenames can wrap here.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>.dashboard { display: grid; gap: 1.5rem; }
+.dashboard__main { min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.long-text { overflow-wrap: anywhere; }
+@media (min-width: 60rem) {
+    .dashboard { grid-template-columns: 15rem minmax(0, 1fr); }
+}
+/* A readable base exists before this enhancement. */
+@supports (container-type: inline-size) {
+    .dashboard__main { container-type: inline-size; }
+}</code></pre>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BEM / reusable classes</td>
+                  <td>Predictable naming and shared styles.</td>
+                  <td>Change one rule instead of many copies.</td>
+                  <td>
+                    A modifier supplements its base class; disabled styling
+                    needs real disabled semantics.
+                  </td>
+                </tr>
+                <tr>
+                  <td>minmax(0, 1fr) / min-width: 0</td>
+                  <td>Permit tracks and children to shrink.</td>
+                  <td>Prevent long content widening the dashboard.</td>
+                  <td>Handle text wrapping and table overflow as well.</td>
+                </tr>
+                <tr>
+                  <td>:focus-visible</td>
+                  <td>
+                    Matches when the browser determines focus should be
+                    indicated.
+                  </td>
+                  <td>Make keyboard navigation discoverable.</td>
+                  <td>Do not globally remove outlines.</td>
+                </tr>
+                <tr>
+                  <td>@supports</td>
+                  <td>Tests support for a declaration.</td>
+                  <td>Layer enhancements above a usable fallback.</td>
+                  <td>It cannot guarantee an entire component is bug-free.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Professional pass</h3>
+          <ul>
+            <li>
+              <strong>Accessibility:</strong> semantic HTML, visible labels,
+              logical DOM order, visible focus, comfortable targets, and
+              readable contrast. Check contrast with a tool; aim for at least
+              4.5:1 for normal text and 3:1 for large text. Do not communicate
+              meaning through color alone.
+            </li>
+            <li>
+              <strong>Motion:</strong> respect reduced-motion preferences;
+              essential information must remain available.
+            </li>
+            <li>
+              <strong>Compatibility:</strong> check features against your target
+              browsers and test there. Keep usable base styles before
+              enhancements.
+            </li>
+            <li>
+              <strong>Maintainability:</strong> use shallow class selectors,
+              reduce duplication, and avoid unnecessary !important. Fix the
+              cascade instead of escalating it.
+            </li>
+            <li>
+              <strong>Performance:</strong> remove verified unused CSS after
+              checking all states, optimize images, reserve image dimensions,
+              lazy-load below-the-fold imagery, and limit excess fonts.
+            </li>
+            <li>
+              <strong>Rendering:</strong> prefer transform/opacity for suitable
+              animation, avoid continuous expensive effects, and measure before
+              adding optimization tricks.
+            </li>
+            <li>
+              <strong>Testing:</strong> narrow and intermediate widths,
+              content-heavy states, zoom, keyboard, reduced motion, and more
+              than one target browser.
+            </li>
+          </ul>
+          <h3>Debug with evidence</h3>
+          <p>
+            Inspect the element → read crossed-out declarations → check Computed
+            values → inspect box dimensions → use Flex/Grid overlays → fix the
+            cause → retest.
+          </p>
+          <div class="code-label">CSS</div>
+          <pre
+            tabindex="0"
+            aria-label="css example"
+          ><code>/* TEMPORARY: reveal box boundaries, then remove. */
+* { outline: 1px solid red; }</code></pre>
+          <p>
+            The outline does not alter dimensions but replaces useful focus
+            outlines while active. Remove it after diagnosis; do not ship it.
+          </p>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>
+                Refactor repeated card rules into a base class and BEM modifier.
+              </li>
+              <li>
+                Build the sidebar/content layout and add a long unbroken
+                filename.
+              </li>
+              <li>
+                Debug an intentionally overridden style, then do a keyboard
+                pass.
+              </li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>Deep selectors make simple overrides difficult.</li>
+            <li>BEM does not require a class on every single element.</li>
+            <li>
+              Removing CSS without checking hover, focus, and error states can
+              break the UI.
+            </li>
+            <li>One successful screenshot is not sufficient verification.</li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>
+                Shared styles have one source; modifiers express a real
+                variation.
+              </li>
+              <li>The sidebar stacks on narrow screens and long text wraps.</li>
+              <li>All interactive items have visible focus.</li>
+              <li>
+                No temporary outlines or unexplained !important rules remain.
+              </li>
+            </ul>
+          </details>
+        </section>
+        <section id="session-8" aria-labelledby="session-8-title">
+          <p class="eyebrow">5:00–6:00 PM · Book 15</p>
+          <h2 id="session-8-title">
+            <span>09</span> Session 8 · Final Real-World Project
+          </h2>
+          <p>
+            <strong>Build: Responsive Developer Portfolio Landing Page.</strong>
+            Start from blank files. Reveal the reference after attempting each
+            section. The finished sample is a learning project with a clearly
+            labeled practice form.
+          </p>
+          <p>
+            <a class="action" href="css-master-revision/index.html"
+              >Open the finished portfolio ↗</a
+            >
+            <a href="css-master-revision/css/style.css" download
+              >Download reference CSS</a
+            >
+          </p>
+          <div class="code-label">TEXT</div>
+          <pre tabindex="0" aria-label="text example"><code>css-master-revision/
+    index.html
+    css/
+        style.css
+    images/
+        workspace.svg</code></pre>
+          <p>
+            The extra local SVG supplies the About image without a network
+            request. Keep it with the project or replace it with a local photo,
+            updating its alt text and dimensions.
+          </p>
+          <h3>One-hour plan</h3>
+          <ol>
+            <li>
+              <strong>0–8 min:</strong> semantic header, logo, navigation, hero,
+              skills, projects, about, contact, footer.
+            </li>
+            <li>
+              <strong>8–18 min:</strong> variables, base type, box sizing,
+              container, reusable button and card.
+            </li>
+            <li>
+              <strong>18–30 min:</strong> Flexbox navigation, responsive Grid
+              cards, about layout, and form.
+            </li>
+            <li>
+              <strong>30–38 min:</strong> badge positioning, gradient, heading
+              pseudo-element, hover, and entrance motion.
+            </li>
+            <li>
+              <strong>38–45 min:</strong> narrow/medium/wide tests, keyboard,
+              reduced motion, validation, and overflow fixes.
+            </li>
+            <li>
+              <strong>45–55 min:</strong> answer 30 short questions without
+              notes, check answers, mark weak topics.
+            </li>
+            <li>
+              <strong>55–60 min:</strong> scan the cheat sheet and book map;
+              finish the professional checklist.
+            </li>
+          </ol>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="What / Why / Remember"
+          >
+            <table>
+              <caption>
+                What / Why / Remember
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Property / concept</th>
+                  <th scope="col">What</th>
+                  <th scope="col">Why</th>
+                  <th scope="col">Remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Header + hero</td>
+                  <td>Flexbox, sticky positioning, gradient, clamp(), svh.</td>
+                  <td>Combine layout, typography, colors, and modern units.</td>
+                  <td>Navigation wraps; the hero uses a minimum height.</td>
+                </tr>
+                <tr>
+                  <td>Skills + projects</td>
+                  <td>Grid, minmax(), reusable BEM-style cards, badge.</td>
+                  <td>Combine responsive layout and components.</td>
+                  <td>min(100%, 260px) avoids an oversized track minimum.</td>
+                </tr>
+                <tr>
+                  <td>About + contact</td>
+                  <td>Responsive image, media queries, labeled controls.</td>
+                  <td>Practice accessible content layouts.</td>
+                  <td>Image dimensions reserve space; the form is a demo.</td>
+                </tr>
+                <tr>
+                  <td>Polish</td>
+                  <td>Pseudo-element, transition, transform, animation.</td>
+                  <td>Add restrained visual feedback.</td>
+                  <td>
+                    Reduced motion disables movement; focus remains visible.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Architecture + performance</td>
+                  <td>
+                    Variables, calc(), one organized CSS file, system font,
+                    local SVG.
+                  </td>
+                  <td>Keep the project readable and light.</td>
+                  <td>No framework or JavaScript is required.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Reference HTML</h3>
+          <details>
+            <summary>Reveal complete index.html</summary>
+            <div class="code-label">HTML</div>
+            <pre
+              tabindex="0"
+              aria-label="html example"
+            ><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;A responsive developer portfolio built with HTML and pure CSS.&quot;&gt;
+    &lt;title&gt;Maya Chen | Developer Portfolio&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+    &lt;header class=&quot;site-header&quot;&gt;
+        &lt;nav class=&quot;container nav&quot; aria-label=&quot;Main navigation&quot;&gt;
+            &lt;a class=&quot;nav__brand&quot; href=&quot;#home&quot;&gt;Maya&lt;span aria-hidden=&quot;true&quot;&gt;.&lt;/span&gt;&lt;/a&gt;
+            &lt;div class=&quot;nav__links&quot;&gt;
+                &lt;a href=&quot;#skills&quot;&gt;Skills&lt;/a&gt;
+                &lt;a href=&quot;#projects&quot;&gt;Projects&lt;/a&gt;
+                &lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;
+                &lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main id=&quot;main&quot; tabindex=&quot;-1&quot;&gt;
+        &lt;section class=&quot;hero&quot; id=&quot;home&quot; aria-labelledby=&quot;hero-title&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;p class=&quot;eyebrow&quot;&gt;Developer / curious maker&lt;/p&gt;
+                &lt;h1 id=&quot;hero-title&quot;&gt;Small details.&lt;br&gt;Better websites.&lt;/h1&gt;
+                &lt;p class=&quot;hero__intro&quot;&gt;I&#x27;m Maya, a front-end developer turning ideas into clear,
+                    accessible interfaces with HTML and CSS.&lt;/p&gt;
+                &lt;a class=&quot;btn&quot; href=&quot;#projects&quot;&gt;Explore my work &lt;span aria-hidden=&quot;true&quot;&gt;↗&lt;/span&gt;&lt;/a&gt;
+                &lt;a class=&quot;hero__secondary&quot; href=&quot;#contact&quot;&gt;Let&#x27;s talk&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;section class=&quot;section container&quot; id=&quot;skills&quot; aria-labelledby=&quot;skills-title&quot;&gt;
+            &lt;p class=&quot;eyebrow&quot;&gt;01 / Toolkit&lt;/p&gt;
+            &lt;h2 class=&quot;section-title&quot; id=&quot;skills-title&quot;&gt;Built on strong foundations.&lt;/h2&gt;
+            &lt;div class=&quot;card-grid&quot;&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                    &lt;span class=&quot;card__number&quot; aria-hidden=&quot;true&quot;&gt;01&lt;/span&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Semantic HTML&lt;/h3&gt;
+                    &lt;p&gt;Meaningful structure, usable forms, and content that makes sense.&lt;/p&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                    &lt;span class=&quot;card__number&quot; aria-hidden=&quot;true&quot;&gt;02&lt;/span&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Responsive CSS&lt;/h3&gt;
+                    &lt;p&gt;Flexible layouts that adapt to content, space, and different screens.&lt;/p&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                    &lt;span class=&quot;card__number&quot; aria-hidden=&quot;true&quot;&gt;03&lt;/span&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Accessible UI&lt;/h3&gt;
+                    &lt;p&gt;Readable contrast, visible focus, and thoughtful motion.&lt;/p&gt;
+                &lt;/article&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;section class=&quot;section container&quot; id=&quot;projects&quot; aria-labelledby=&quot;projects-title&quot;&gt;
+            &lt;p class=&quot;eyebrow&quot;&gt;02 / Selected practice&lt;/p&gt;
+            &lt;h2 class=&quot;section-title&quot; id=&quot;projects-title&quot;&gt;Learning by making.&lt;/h2&gt;
+            &lt;div class=&quot;card-grid&quot;&gt;
+                &lt;article class=&quot;card card--featured&quot;&gt;
+                    &lt;span class=&quot;card__badge&quot;&gt;Featured&lt;/span&gt;
+                    &lt;p class=&quot;eyebrow&quot;&gt;Layout / 01&lt;/p&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Studio homepage&lt;/h3&gt;
+                    &lt;p&gt;A welcoming landing page with a flexible hero and reusable cards.&lt;/p&gt;
+                    &lt;details&gt;&lt;summary&gt;Layout notes&lt;/summary&gt;&lt;p&gt;Flexbox navigation,
+                        Grid cards, and mobile-first content.&lt;/p&gt;&lt;/details&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                    &lt;p class=&quot;eyebrow&quot;&gt;Components / 02&lt;/p&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Reading dashboard&lt;/h3&gt;
+                    &lt;p&gt;A calm interface for tracking books and reading goals.&lt;/p&gt;
+                    &lt;details&gt;&lt;summary&gt;Layout notes&lt;/summary&gt;&lt;p&gt;Named Grid regions
+                        and a shrinkable main column keep the layout robust.&lt;/p&gt;&lt;/details&gt;
+                &lt;/article&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                    &lt;p class=&quot;eyebrow&quot;&gt;Responsive / 03&lt;/p&gt;
+                    &lt;h3 class=&quot;card__title&quot;&gt;Local café&lt;/h3&gt;
+                    &lt;p&gt;A simple menu and contact experience for a neighborhood café.&lt;/p&gt;
+                    &lt;details&gt;&lt;summary&gt;Layout notes&lt;/summary&gt;&lt;p&gt;Fluid typography,
+                        responsive imagery, and readable line lengths.&lt;/p&gt;&lt;/details&gt;
+                &lt;/article&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;section class=&quot;section container about&quot; id=&quot;about&quot; aria-labelledby=&quot;about-title&quot;&gt;
+            &lt;img class=&quot;about__image&quot; src=&quot;images/workspace.svg&quot;
+                 alt=&quot;Illustrated workspace with a laptop and a small plant&quot;
+                 width=&quot;640&quot; height=&quot;480&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+            &lt;div&gt;
+                &lt;p class=&quot;eyebrow&quot;&gt;03 / A little about me&lt;/p&gt;
+                &lt;h2 class=&quot;section-title&quot; id=&quot;about-title&quot;&gt;Make it useful.&lt;br&gt;Then make it feel right.&lt;/h2&gt;
+                &lt;p&gt;I enjoy translating a rough idea into a website that is easy to read and use.
+                    This sample portfolio brings together a day of CSS revision.&lt;/p&gt;
+                &lt;p&gt;My process: understand the content, build a flexible structure,
+                    test the details, and keep improving.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+        &lt;section class=&quot;section container contact&quot; id=&quot;contact&quot; aria-labelledby=&quot;contact-title&quot;&gt;
+            &lt;div&gt;
+                &lt;p class=&quot;eyebrow&quot;&gt;04 / Get in touch&lt;/p&gt;
+                &lt;h2 class=&quot;section-title&quot; id=&quot;contact-title&quot;&gt;Have something in mind?&lt;/h2&gt;
+                &lt;p id=&quot;form-note&quot;&gt;This is a CSS practice form. The button checks browser
+                    validation only. Nothing is sent or stored.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;form class=&quot;contact-form&quot; action=&quot;#contact&quot; method=&quot;get&quot; aria-describedby=&quot;form-note&quot;&gt;
+                &lt;div class=&quot;field&quot;&gt;
+                    &lt;label for=&quot;name&quot;&gt;Name (required)&lt;/label&gt;
+                    &lt;input id=&quot;name&quot; type=&quot;text&quot; autocomplete=&quot;name&quot; required&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;field&quot;&gt;
+                    &lt;label for=&quot;email&quot;&gt;Email (required)&lt;/label&gt;
+                    &lt;input id=&quot;email&quot; type=&quot;email&quot; autocomplete=&quot;email&quot; required&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;field field--full&quot;&gt;
+                    &lt;label for=&quot;message&quot;&gt;Message (required)&lt;/label&gt;
+                    &lt;textarea id=&quot;message&quot; rows=&quot;5&quot; required&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;button class=&quot;btn field--full&quot; type=&quot;submit&quot;&gt;Check practice form&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer class=&quot;site-footer&quot;&gt;
+        &lt;div class=&quot;container footer-layout&quot;&gt;
+            &lt;p&gt;Maya Chen · HTML + pure CSS&lt;/p&gt;
+            &lt;a href=&quot;../css-revision.html&quot;&gt;Back to CSS revision&lt;/a&gt;
+            &lt;a href=&quot;#home&quot;&gt;Back to top ↑&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </details>
+          <h3>Reference CSS</h3>
+          <details>
+            <summary>Reveal complete css/style.css</summary>
+            <div class="code-label">CSS</div>
+            <pre
+              tabindex="0"
+              aria-label="css example"
+            ><code>/* 1. Reset, variables, and base */
+:root {
+    --primary: #1c5749;
+    --primary-dark: #103c32;
+    --text: #18342d;
+    --muted: #4c645c;
+    --background: #f7f8f2;
+    --surface: #fff;
+    --line: #d1dbcf;
+    --radius: 16px;
+    --space: 1.5rem;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    background: var(--background);
+    color: var(--text);
+}
+h1, h2, h3 {
+    line-height: 1.15;
+}
+h1 {
+    font-size: clamp(2.4rem, 1.4rem + 4vw, 5rem);
+    letter-spacing: -0.04em;
+}
+h2 {
+    font-size: clamp(1.8rem, 1.1rem + 2vw, 3rem);
+    letter-spacing: -0.03em;
+}
+h3 {
+    font-size: 1.3rem;
+}
+p {
+    max-width: 65ch;
+}
+a {
+    color: var(--primary);
+    text-underline-offset: 0.25em;
+}
+a:hover {
+    color: var(--primary-dark);
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+button, input, textarea {
+    font: inherit;
+}
+:focus-visible {
+    outline: 3px solid #914000;
+    outline-offset: 4px;
+}
+section[id], main[id] {
+    scroll-margin-top: 8rem;
+}
+.container {
+    width: calc(100% - 2rem);
+    max-width: 1120px;
+    margin-inline: auto;
+}
+.section {
+    padding-block: clamp(3rem, 6vw, 5rem);
+}
+.eyebrow {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+.section-title {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-top: 0.75rem;
+}
+.section-title::after {
+    content: &quot;&quot;;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 3px;
+    background: var(--primary);
+}
+
+/* 2. Navigation and hero */
+.skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 1rem;
+    z-index: 20;
+    padding: 0.75rem;
+    background: white;
+    transform: translateY(-200%);
+}
+.skip-link:focus {
+    transform: translateY(0);
+}
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--background);
+    border-bottom: 1px solid var(--line);
+}
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 2rem;
+    padding-block: 0.75rem;
+}
+.nav__brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+.nav__brand &gt; span {
+    color: #914000;
+}
+.nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+}
+.nav__links a {
+    display: inline-block;
+    padding-block: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+}
+.nav__links a:hover {
+    text-decoration: underline;
+}
+.hero {
+    min-height: 65vh;
+    min-height: 65svh;
+    display: grid;
+    align-items: center;
+    padding-block: 4rem;
+    background: linear-gradient(120deg, #e7efdb, #f7f8f2);
+}
+.hero h1 {
+    max-width: 13ch;
+    margin-block: 1rem;
+    animation: appear 0.5s ease;
+}
+.hero__intro {
+    max-width: 50ch;
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+}
+.hero__secondary {
+    display: inline-block;
+    margin: 1rem;
+}
+
+/* 3. Reusable components */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.25rem;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    background: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn:hover {
+    color: white;
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: var(--space);
+    margin-top: 2rem;
+}
+.card {
+    position: relative;
+    min-width: 0;
+    padding: var(--space);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: 0 8px 24px rgb(24 52 45 / 0.04);
+    transition: transform 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-3px);
+}
+.card &gt; p:last-child {
+    margin-bottom: 0;
+}
+.card__title {
+    margin-top: 1rem;
+}
+.card__number {
+    color: var(--primary);
+    font-weight: 700;
+}
+.card--featured {
+    padding-top: 3rem;
+    border-color: var(--primary);
+}
+.card__badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.15rem 0.65rem;
+    border-radius: 2rem;
+    background: #e7efdb;
+    color: var(--primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+summary {
+    cursor: pointer;
+    color: var(--primary);
+    font-weight: 700;
+    padding-block: 0.5rem;
+}
+details[open] summary {
+    text-decoration: underline;
+}
+
+/* 4. About and form layouts */
+.about, .contact {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+.about__image {
+    width: 100%;
+    border-radius: var(--radius);
+}
+.contact {
+    border-top: 1px solid var(--line);
+    align-items: start;
+}
+.contact-form {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+}
+.field {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+label {
+    font-weight: 700;
+}
+input, textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 0.75rem;
+    border: 1px solid #64766c;
+    border-radius: 8px;
+    color: var(--text);
+    background: white;
+}
+input[type=&quot;email&quot;] {
+    border-bottom-width: 2px;
+}
+input:focus, textarea:focus {
+    border-color: var(--primary);
+    outline: 3px solid #914000;
+    outline-offset: 2px;
+}
+textarea {
+    resize: vertical;
+}
+.site-footer {
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+}
+.footer-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* 5. Content-driven enhancements and motion */
+@media (min-width: 48rem) {
+    .about, .contact {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 3rem;
+    }
+    .contact-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .field--full {
+        grid-column: 1 / -1;
+    }
+}
+@media (min-width: 64rem) {
+    .nav {
+        padding-block: 1rem;
+    }
+    .hero {
+        padding-block: 5rem;
+    }
+}
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero h1 {
+        animation: none;
+    }
+    .btn, .card {
+        transition: none;
+    }
+    .btn:hover, .card:hover {
+        transform: none;
+    }
+}</code></pre>
+          </details>
+          <p>
+            <a href="css-master-revision/images/workspace.svg" download
+              >Download the local illustration</a
+            >. The demo form intentionally omits field names so its GET
+            navigation includes no entered values. A real form needs names, a
+            submission endpoint, and server-side validation.
+          </p>
+          <aside class="practice">
+            <h3>Code &amp; practice</h3>
+            <ol>
+              <li>Build the full page with HTML + pure CSS.</li>
+              <li>Explain a rule from every row of the feature map.</li>
+              <li>Compare your first attempt with the reference.</li>
+            </ol>
+          </aside>
+          <h3>Common mistakes</h3>
+          <ul>
+            <li>Copying code without recalling why each property exists.</li>
+            <li>Treating a practice form as message delivery.</li>
+            <li>
+              Sticky headers can cover anchor targets; use scroll-margin-top and
+              test wrapping.
+            </li>
+            <li>Polishing shadows before structure, overflow, and focus.</li>
+          </ul>
+          <details>
+            <summary>Check your work</summary>
+            <ul>
+              <li>All navigation links target existing sections.</li>
+              <li>
+                Cards fit at 320px; about/contact become columns when space
+                allows.
+              </li>
+              <li>
+                Keyboard order follows the page; details open from the keyboard.
+              </li>
+              <li>
+                Empty/invalid inputs trigger native validation; a valid form
+                returns to the contact section without sending values.
+              </li>
+              <li>Reduced motion removes the entrance and hover movement.</li>
+            </ul>
+          </details>
+        </section>
+        <section id="cheat-sheet" aria-labelledby="cheat-sheet-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="cheat-sheet-title"><span>10</span> CSS Master Cheat Sheet</h2>
+          <p>
+            Try to recall the rule before looking. These reminders are not one
+            stylesheet to paste all at once.
+          </p>
+          <div class="cheat-grid">
+            <div>
+              <h3>Selectors</h3>
+              <div class="code-label">CSS</div>
+              <pre tabindex="0" aria-label="css example"><code>p {}
+.card {}
+#header {}
+.parent &gt; .child {}
+input[type=&quot;email&quot;] {}
+button:hover {}
+.title::after { content: &quot;&quot;; }</code></pre>
+            </div>
+            <div>
+              <h3>Box model</h3>
+              <div class="code-label">CSS</div>
+              <pre tabindex="0" aria-label="css example"><code>.card {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    box-sizing: border-box;
+}</code></pre>
+            </div>
+            <div>
+              <h3>Position</h3>
+              <div class="code-label">CSS</div>
+              <pre
+                tabindex="0"
+                aria-label="css example"
+              ><code>/* static | relative | absolute | fixed | sticky */
+.card { position: relative; }
+.badge { position: absolute; top: 10px; right: 10px; }
+.nav { position: sticky; top: 0; z-index: 10; }</code></pre>
+            </div>
+            <div>
+              <h3>Flexbox</h3>
+              <div class="code-label">CSS</div>
+              <pre tabindex="0" aria-label="css example"><code>.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.item { flex: 1 1 250px; }</code></pre>
+            </div>
+            <div>
+              <h3>Grid</h3>
+              <div class="code-label">CSS</div>
+              <pre tabindex="0" aria-label="css example"><code>.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+.feature { grid-column: 1 / -1; grid-row: 1; }</code></pre>
+            </div>
+            <div>
+              <h3>Responsive</h3>
+              <div class="code-label">CSS</div>
+              <pre
+                tabindex="0"
+                aria-label="css example"
+              ><code>img { max-width: 100%; height: auto; }
+@media (min-width: 768px) {
+    .layout { display: flex; gap: 2rem; }
+}</code></pre>
+            </div>
+            <div>
+              <h3>Modern CSS</h3>
+              <div class="code-label">CSS</div>
+              <pre
+                tabindex="0"
+                aria-label="css example"
+              ><code>:root { --space: 1rem; }
+.box {
+    padding: var(--space);
+    width: calc(100% - 2rem);
+    max-width: min(100%, 70rem);
+    margin-block: max(1rem, 2vw);
+    min-height: 100dvh;
+}
+h1 { font-size: clamp(2rem, 1rem + 4vw, 4rem); }</code></pre>
+            </div>
+            <div>
+              <h3>Animation</h3>
+              <div class="code-label">CSS</div>
+              <pre
+                tabindex="0"
+                aria-label="css example"
+              ><code>.button { transition: transform 0.2s ease; }
+.button:hover { transform: translateY(-2px); }
+.card { animation: fadeIn 0.5s ease; }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+    .button { transition: none; }
+    .button:hover { transform: none; }
+}</code></pre>
+            </div>
+          </div>
+        </section>
+        <section id="book-map" aria-labelledby="book-map-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="book-map-title"><span>11</span> 15-Book Revision Map</h2>
+          <div
+            class="table-scroll"
+            tabindex="0"
+            role="region"
+            aria-label="All 15 books at a glance"
+          >
+            <table>
+              <caption>
+                All 15 books at a glance
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Book</th>
+                  <th scope="col">Must remember</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Syntax, selectors, colors, units</td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Box model and sizing</td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>Display and positioning</td>
+                </tr>
+                <tr>
+                  <td>04</td>
+                  <td>Flexbox</td>
+                </tr>
+                <tr>
+                  <td>05</td>
+                  <td>Grid</td>
+                </tr>
+                <tr>
+                  <td>06</td>
+                  <td>Responsive design</td>
+                </tr>
+                <tr>
+                  <td>07</td>
+                  <td>Typography and visual styling</td>
+                </tr>
+                <tr>
+                  <td>08</td>
+                  <td>Advanced selectors and pseudo elements</td>
+                </tr>
+                <tr>
+                  <td>09</td>
+                  <td>Transitions, transforms and animations</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Modern CSS</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>Forms and reusable UI components</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>CSS architecture</td>
+                </tr>
+                <tr>
+                  <td>13</td>
+                  <td>Advanced responsive interfaces</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>Accessibility, optimization and debugging</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>Combine everything into real projects</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="questions" aria-labelledby="questions-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="questions-title"><span>12</span> 30 Revision Questions</h2>
+          <p>
+            Close the notes. Answer each in one sentence or a tiny CSS example.
+            Allow about 7 minutes for recall and 3 minutes to check; mark unsure
+            answers rather than stopping the schedule.
+          </p>
+          <ol>
+            <li>What is the CSS box model?</li>
+            <li>How do margin and padding differ?</li>
+            <li>What does box-sizing: border-box do?</li>
+            <li>How do block, inline, and inline-block differ?</li>
+            <li>How do relative and absolute positioning differ?</li>
+            <li>
+              What is z-index, and why might 9999 still not bring an item
+              forward?
+            </li>
+            <li>When would you choose Flexbox?</li>
+            <li>When would you choose Grid?</li>
+            <li>How do justify-content and align-items differ in Flexbox?</li>
+            <li>What does flex: 1 1 250px mean?</li>
+            <li>What does 1fr mean in Grid?</li>
+            <li>What do minmax() and auto-fit do together?</li>
+            <li>
+              What is mobile-first CSS, and how do you choose a breakpoint?
+            </li>
+            <li>How do rem and em differ?</li>
+            <li>How do you make an image responsive without distortion?</li>
+            <li>What is a pseudo-class?</li>
+            <li>
+              What is a pseudo-element, and what does an empty ::after need?
+            </li>
+            <li>How do transitions and animations differ?</li>
+            <li>How does transform affect normal document flow?</li>
+            <li>Why use CSS variables?</li>
+            <li>What does clamp() do?</li>
+            <li>What is a container query?</li>
+            <li>How do svh, lvh, and dvh differ?</li>
+            <li>What does BEM mean?</li>
+            <li>Why avoid unnecessary !important and excessive specificity?</li>
+            <li>Why are focus styles and visible labels important?</li>
+            <li>What is prefers-reduced-motion?</li>
+            <li>How can CSS and rendering performance be improved?</li>
+            <li>A card overflows. What should you inspect first?</li>
+            <li>What must you test before calling the portfolio finished?</li>
+          </ol>
+        </section>
+        <section id="answers" aria-labelledby="answers-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="answers-title"><span>13</span> Answers</h2>
+          <p>
+            Attempt all questions first. Give yourself one point per
+            substantially correct answer. This is a revision signal, not a
+            certification.
+          </p>
+          <details>
+            <summary>Reveal the separate answer key (1–30)</summary>
+            <ol>
+              <li>
+                Content, padding, border, and margin, moving from inside
+                outward.
+              </li>
+              <li>
+                Padding is inside the border; margin separates the box from
+                surrounding boxes.
+              </li>
+              <li>
+                Declared width/height includes padding and border, but not
+                margin.
+              </li>
+              <li>
+                Block starts a new line; inline flows with text and ordinary
+                inline boxes ignore width/height; inline-block flows inline but
+                accepts dimensions.
+              </li>
+              <li>
+                Relative keeps flow space. Absolute is removed from flow and
+                uses its containing block, commonly a positioned ancestor.
+              </li>
+              <li>
+                It controls stacking within a stacking context. A child cannot
+                escape its ancestor stacking context by increasing its number.
+              </li>
+              <li>
+                For primarily one-dimensional alignment such as navigation,
+                toolbar actions, or a row/column of items.
+              </li>
+              <li>
+                When rows and columns should be coordinated, such as card
+                collections and page regions.
+              </li>
+              <li>
+                justify-content distributes main-axis space; align-items aligns
+                on the cross axis. flex-direction determines those axes.
+              </li>
+              <li>
+                Grow factor 1, shrink factor 1, and initial basis 250px. The
+                basis is not a minimum width.
+              </li>
+              <li>
+                One share of remaining track space. Intrinsic content minimums
+                can affect the final result.
+              </li>
+              <li>
+                minmax defines a track range. auto-fit fits tracks and collapses
+                unused ones so occupied tracks can expand.
+              </li>
+              <li>
+                Start with the narrow layout, then enhance with min-width
+                queries where the content needs a change.
+              </li>
+              <li>
+                rem uses the root font size. em generally uses the element font
+                size; em in font-size uses the parent font size.
+              </li>
+              <li>
+                Use max-width: 100% and height: auto; intrinsic HTML dimensions
+                reserve its aspect ratio.
+              </li>
+              <li>
+                A state or structural condition such as :hover, :focus-visible,
+                or :nth-child(2).
+              </li>
+              <li>
+                It represents generated or partial content. A decorative ::after
+                needs content: &quot;&quot; and visual styles.
+              </li>
+              <li>
+                A transition interpolates changed values; an animation follows
+                named keyframes and can run without interaction.
+              </li>
+              <li>
+                It visually moves, scales, or rotates a box without
+                repositioning its neighbors in normal flow.
+              </li>
+              <li>
+                They centralize reusable values, inherit, and can be overridden
+                within a component or theme.
+              </li>
+              <li>It keeps a preferred value between a minimum and maximum.</li>
+              <li>
+                It adapts descendants to an eligible ancestor container; width
+                queries need a size-query container such as container-type:
+                inline-size.
+              </li>
+              <li>
+                They use small, large, and dynamic viewport heights. dvh can
+                change as browser controls change.
+              </li>
+              <li>
+                Block, Element, Modifier: card, card__title, card--featured.
+              </li>
+              <li>
+                They make overrides and maintenance difficult. Fix source order,
+                scope, and selector design first.
+              </li>
+              <li>
+                Focus tells keyboard users where they are; labels communicate a
+                control’s purpose and its accessible name.
+              </li>
+              <li>
+                A media feature for the user’s motion preference, used to reduce
+                or remove non-essential motion.
+              </li>
+              <li>
+                Remove verified unused CSS and duplication, optimize assets,
+                reserve image space, limit excess fonts/effects, and measure
+                bottlenecks.
+              </li>
+              <li>
+                Computed sizing, box-sizing, padding, min-width, long content,
+                and flex/grid tracks. Fix the cause rather than hiding it.
+              </li>
+              <li>
+                Structure, links, forms, narrow/medium/wide and intermediate
+                widths, overflow, images, keyboard, contrast, zoom, reduced
+                motion, and target browsers.
+              </li>
+            </ol>
+          </details>
+          <p>
+            <strong>24–30:</strong> build and repair weak spots.
+            <strong>18–23:</strong> repeat missed mini practices later.
+            <strong>Below 18:</strong> revisit the sessions behind your misses
+            before increasing project complexity.
+          </p>
+        </section>
+        <section id="challenge" aria-labelledby="challenge-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="challenge-title">
+            <span>14</span> 60-Minute Final Challenge
+          </h2>
+          <p class="notice">
+            <strong
+              >Optional extra practice · 60 minutes after the revision
+              day.</strong
+            >
+            Build a responsive website without looking at the notes. Use HTML +
+            pure CSS. No Bootstrap, Tailwind, Sass/SCSS, CSS framework, or
+            JavaScript framework.
+          </p>
+          <p>
+            Choose a portfolio, café, or studio. Start with blank files and
+            include every requirement:
+          </p>
+          <ol>
+            <li>Navbar</li>
+            <li>Hero</li>
+            <li>CTA button</li>
+            <li>About section</li>
+            <li>Services or skills cards</li>
+            <li>Responsive Grid</li>
+            <li>Contact form</li>
+            <li>Footer</li>
+            <li>Flexbox</li>
+            <li>Grid</li>
+            <li>Media queries</li>
+            <li>CSS variables</li>
+            <li>clamp()</li>
+            <li>Hover effects</li>
+            <li>Transition</li>
+            <li>Transform</li>
+            <li>Pseudo element</li>
+            <li>Responsive images</li>
+            <li>Accessible focus states</li>
+            <li>Mobile + tablet + desktop layouts</li>
+          </ol>
+          <p>
+            <strong>Timebox:</strong> 10 min structure → 25 min layout and
+            components → 15 min responsive styling and effects → 10 min testing
+            and fixes. Stop at 60 minutes and use the checklist. Missing
+            requirements become your next practice tasks.
+          </p>
+          <p>
+            <strong>Pass condition:</strong> all 20 requirements are present,
+            narrow/medium/wide layouts work, focus is visible, and essential
+            content is not clipped. Reopen the notes only after the timer ends.
+          </p>
+        </section>
+        <section id="checklist" aria-labelledby="checklist-title">
+          <p class="eyebrow">Master revision</p>
+          <h2 id="checklist-title"><span>15</span> Professional Checklist</h2>
+          <p>
+            Check only what you have tested. These are temporary working
+            checkboxes; print or save your results before closing the page.
+          </p>
+          <fieldset>
+            <legend>Ready to build beyond the notes?</legend>
+            <label class="check-item"
+              ><input type="checkbox" id="check-1" /><span
+                >HTML structure works</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-2" /><span
+                >CSS file connected correctly</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-3" /><span
+                >No horizontal overflow</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-4" /><span
+                >Mobile layout works</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-5" /><span
+                >Tablet layout works</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-6" /><span
+                >Desktop layout works</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-7" /><span
+                >Flexbox used correctly</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-8" /><span
+                >Grid used correctly</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-9" /><span
+                >Images responsive</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-10" /><span
+                >Typography readable</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-11" /><span
+                >Colors have suitable contrast</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-12" /><span
+                >Buttons have hover states</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-13" /><span
+                >Keyboard focus is visible</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-14" /><span
+                >Forms are usable</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-15" /><span
+                >Animations are not excessive</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-16" /><span
+                >Reduced motion considered</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-17" /><span
+                >CSS variables used appropriately</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-18" /><span
+                >Repeated CSS reduced</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-19" /><span
+                >Specificity kept manageable</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-20" /><span
+                >Unnecessary !important avoided</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-21" /><span
+                >Unused CSS removed where practical</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-22" /><span
+                >Browser DevTools checked</span
+              ></label
+            ><label class="check-item"
+              ><input type="checkbox" id="check-23" /><span
+                >Major browser compatibility considered</span
+              ></label
+            >
+          </fieldset>
+          <p>
+            <strong>Next step:</strong> build another small website with
+            different content. Once you can explain and debug your CSS, explore
+            Bootstrap or Tailwind with a stronger foundation.
+          </p>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <div class="wrap">
+        Remember → Understand → Write Code → Test → Fix → Build
+        <p>
+          <a href="#">Back to top ↑</a> ·
+          <a href="css-master-revision/index.html">Open portfolio project</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
